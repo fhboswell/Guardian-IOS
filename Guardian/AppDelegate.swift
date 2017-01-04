@@ -16,8 +16,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+       
+        purge("Individual")
+        purge("Group")
+
+         setupCoreData()
+        
         // Override point for customization after application launch.
         return true
+    }
+    func purge(_ entityName:String){
+        let moc = persistentContainer.viewContext
+        let venueFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entityName )
+        do {
+            let fetched = try moc.fetch(venueFetch) as! [NSManagedObject]
+            fetched.forEach({moc.delete($0)})
+            
+        } catch {
+            print("Something went wrong.\n")
+        }
+        saveContext()
+        
+    }
+    
+    func setupCoreData(){
+        let moc = persistentContainer.viewContext
+        let group = NSEntityDescription.insertNewObject(forEntityName: "Group", into: moc) as! Group
+        
+        group.title = "testgrou"
+        group.desc = "test group descritption"
+       
+        
+        let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
+        individual.name = "bob"
+        individual.check = "No"
+        
+        let individual2 = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
+        individual.name = "henry"
+        individual.check = "No"
+        
+        
+        group.individuals = [individual, individual2]
+        
+        
+        saveContext()
+    
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

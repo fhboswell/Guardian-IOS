@@ -13,6 +13,7 @@
 		94424FB01E1C9530001C907E /* Guardian.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94424FAE1E1C9530001C907E /* Guardian.xcdatamodeld */; };
 		94424FB21E1C9530001C907E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB11E1C9530001C907E /* Assets.xcassets */; };
 		94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB31E1C9530001C907E /* LaunchScreen.storyboard */; };
+		94424FBD1E1C9870001C907E /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		94424FB11E1C9530001C907E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94424FB41E1C9530001C907E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94424FB61E1C9530001C907E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				94424FA71E1C9530001C907E /* AppDelegate.swift */,
 				94424FA91E1C9530001C907E /* ViewController.swift */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
+				94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB61E1C9530001C907E /* Info.plist */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94424FAA1E1C9530001C907E /* ViewController.swift in Sources */,
+				94424FBD1E1C9870001C907E /* GroupsTableViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,
 				94424FB01E1C9530001C907E /* Guardian.xcdatamodeld in Sources */,
 			);
