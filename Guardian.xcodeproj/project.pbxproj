@@ -15,6 +15,7 @@
 		94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB31E1C9530001C907E /* LaunchScreen.storyboard */; };
 		94424FBD1E1C9870001C907E /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */; };
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
+		947AEEF81E1EF4790042659F /* IndividualsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF71E1EF4790042659F /* IndividualsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		94424FB61E1C9530001C907E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		947AEEF71E1EF4790042659F /* IndividualsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				94424FA91E1C9530001C907E /* ViewController.swift */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
 				94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */,
+				947AEEF71E1EF4790042659F /* IndividualsTableViewController.swift */,
 				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947AEEF81E1EF4790042659F /* IndividualsTableViewController.swift in Sources */,
 				94424FAA1E1C9530001C907E /* ViewController.swift in Sources */,
 				94424FBD1E1C9870001C907E /* GroupsTableViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,

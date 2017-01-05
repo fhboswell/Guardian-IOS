@@ -155,7 +155,53 @@ class GroupsTableViewController: UITableViewController {
         configureCell(cell: cell, indexPath: indexPath)
         return cell
     }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    
+        
+        performSegue(withIdentifier: "ShowGroup", sender: tableView.cellForRow(at: indexPath))
+        
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        var destination = segue.destination as UIViewController
+        if let navCon = destination as? UINavigationController{
+            destination = navCon.visibleViewController!
+        }
+        if let ITVC = destination as? IndividualsTableViewController {
+            if let identifier = segue.identifier{
+                switch identifier{
+                case "ShowGroup":
+                    if let cell = sender as? UITableViewCell{
+                        if let indexPath = tableView.indexPath(for: cell){
+                            
+                            guard let selectedGroup = fetchedResultsController.object(at: indexPath) as? Group
+                                else{
+                                    fatalError("Failed to initialize ")
+                            }
+                            let group = selectedGroup.title
+                            
+                            
+                            ITVC.group = group!
+                        }
+                    }
+                default: break
+                }
+            }
+        }
 
+        
+        
+        
+    }
+    
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
