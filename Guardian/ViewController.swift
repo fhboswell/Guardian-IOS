@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class ViewController: UIViewController  {
 
@@ -15,8 +16,29 @@ class ViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        //UINavigationBar.a
+            //hexStringToUIColor(hex: "0x1D3557")
+        
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        var nav = self.navigationController?.navigationBar
+        
+        //nav?.barStyle = UIBarStyle.blackOpaque
+    
+        
+        //nav?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80.0)
+        nav?.barTintColor = UIColor(netHex:0x1D3557)
+        //self.navigationBar.barTintColor = UIColor.orangeColor()
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,8 +78,9 @@ class ViewController: UIViewController  {
             //let responseString = String(data: data, encoding: .utf8)
             do{
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-                print(json["auth_token"]!)
-                self.loginSucessful(token: json["auth_token"]! as! NSString)
+                let userJson = json["user"] as! [String:Any]
+                let userID = userJson["id"] as! Int
+                self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString)
             }catch{
                self.loginUnsucessful()
             }
@@ -73,10 +96,11 @@ class ViewController: UIViewController  {
         }
     }
     
-    func loginSucessful(token: NSString){
+    func loginSucessful(token: NSString, ID: NSString){
         
         DispatchQueue.main.async {
             KeychainController.saveToken(token: token)
+            KeychainController.saveID(ID: ID)
             let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
             user.token = token as String
@@ -97,5 +121,19 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+}
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(netHex:Int) {
+        self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+        
+    }
 }
 

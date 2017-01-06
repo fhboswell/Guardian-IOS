@@ -59,9 +59,9 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.11326991766691208" green="0.20495694875717163" blue="0.33777952194213867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0uu-zy-kPb"/>
+                    <navigationItem key="navigationItem" prompt=" " id="0uu-zy-kPb"/>
                     <connections>
                         <outlet property="EmailField" destination="Pde-YA-aOc" id="rdP-Nf-zsZ"/>
                         <outlet property="PasswordField" destination="YMJ-xK-0ws" id="LOC-cr-WTz"/>
@@ -85,7 +85,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xbl-yj-kma" id="Zpo-fv-fyV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -95,6 +95,7 @@
                             <outlet property="delegate" destination="QrE-5P-QFg" id="3W3-vC-sKT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" prompt=" " id="3TM-eI-Ffe"/>
                     <connections>
                         <segue destination="lHO-Xu-g0A" kind="show" identifier="ShowGroup" id="EY0-QA-CYx"/>
                     </connections>
@@ -112,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sD3-aP-6I5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cellidentifier" id="sD3-aP-6I5">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sD3-aP-6I5" id="1hy-Bu-EO1">
@@ -126,6 +127,7 @@
                             <outlet property="delegate" destination="lHO-Xu-g0A" id="VPt-uJ-7DV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" prompt=" " id="LcB-Mg-aeu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEW-3C-nxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -23,6 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
          setupCoreData()
         
+        
+        UINavigationBar.appearance().shadowImage = UIImage()
+        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = UIColor(netHex:0x1D3557)
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        UINavigationBar.appearance().isTranslucent = false
+        
+        //UINavigationBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80.0)
+        
+        
         // Override point for customization after application launch.
         return true
     }
@@ -43,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupCoreData(){
         let moc = persistentContainer.viewContext
         let group = NSEntityDescription.insertNewObject(forEntityName: "Group", into: moc) as! Group
+        
         
         group.title = "testgrou"
         group.desc = "test group descritption"
