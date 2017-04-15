@@ -17,56 +17,14 @@ class ViewController: UIViewController  {
     
     
    
-    let client = ActionCableClient(url: URL(string:"wss://guardian-app-v1.herokuapp.com/cable")!)
-    //wss://actioncable-echo.herokuapp.com/
-    //fathomless-spire-33422.herokuapp.com/
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+        ActionCableController.sharedInstance.initializeActionCable()
         
-        
-        print("made it here")
-        client.connect()
-        
-        self.client.willConnect = {
-            print("Will Connect")
-        }
-        
-        
-        self.client.onConnected = {
-            print("Connected to \(self.client.url)")
-        }
-        
-        self.client.onDisconnected = {(error: ConnectionError?) in
-            print("Disconected with error: \(error)")
-        }
-        
-        self.client.willReconnect = {
-            print("Reconnecting to \(self.client.url)")
-            return true
-        }
-        let roomChannel = client.create("RoomChannel")
-        
-        roomChannel.onReceive = { (JSON : Any?, error : Error?) in
-            print("Received", JSON, error)
-        }
-        
-        // A channel has successfully been subscribed to.
-        roomChannel.onSubscribed = {
-            print("Yay!")
-        }
-        
-        // A channel was unsubscribed, either manually or from a client disconnect.
-        roomChannel.onUnsubscribed = {
-            print("Unsubscribed")
-        }
-        
-        // The attempt at subscribing to a channel was rejected by the server.
-        roomChannel.onRejected = {
-            print("Rejected")
-        }
+       
 
         //UINavigationBar.a
             //hexStringToUIColor(hex: "0x1D3557")
@@ -76,12 +34,7 @@ class ViewController: UIViewController  {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        var nav = self.navigationController?.navigationBar
-        
-        //nav?.barStyle = UIBarStyle.blackOpaque
-    
-        
-        //nav?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80.0)
+        let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor(netHex:0x1D3557)
         //self.navigationBar.barTintColor = UIColor.orangeColor()
         
@@ -117,13 +70,13 @@ class ViewController: UIViewController  {
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
+                print("error=\(String(describing: error))")
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
+                print("response = \(String(describing: response))")
             }
             
             //let responseString = String(data: data, encoding: .utf8)
