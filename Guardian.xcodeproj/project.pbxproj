@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94289A141EA1B96700C73ED3 /* ActionCableClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94289A131EA1B96700C73ED3 /* ActionCableClient.framework */; };
+		94289A161EA1B96F00C73ED3 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94289A151EA1B96F00C73ED3 /* Starscream.framework */; };
 		94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FA71E1C9530001C907E /* AppDelegate.swift */; };
 		94424FAA1E1C9530001C907E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FA91E1C9530001C907E /* ViewController.swift */; };
 		94424FAD1E1C9530001C907E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94424FAB1E1C9530001C907E /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94289A131EA1B96700C73ED3 /* ActionCableClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActionCableClient.framework; path = Carthage/Build/iOS/ActionCableClient.framework; sourceTree = "<group>"; };
+		94289A151EA1B96F00C73ED3 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		94424FA41E1C9530001C907E /* Guardian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guardian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94424FA71E1C9530001C907E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94424FA91E1C9530001C907E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94289A141EA1B96700C73ED3 /* ActionCableClient.framework in Frameworks */,
+				94289A161EA1B96F00C73ED3 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94289A121EA1B96700C73ED3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94289A151EA1B96F00C73ED3 /* Starscream.framework */,
+				94289A131EA1B96700C73ED3 /* ActionCableClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		94424F9B1E1C9530001C907E = {
 			isa = PBXGroup;
 			children = (
 				94424FA61E1C9530001C907E /* Guardian */,
 				94424FA51E1C9530001C907E /* Products */,
+				94289A121EA1B96700C73ED3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +102,7 @@
 				94424FA01E1C9530001C907E /* Sources */,
 				94424FA11E1C9530001C907E /* Frameworks */,
 				94424FA21E1C9530001C907E /* Resources */,
+				94289A171EA1B9A500C73ED3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -142,6 +159,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94289A171EA1B9A500C73ED3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ActionCableClient.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		94424FA01E1C9530001C907E /* Sources */ = {
@@ -274,6 +309,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Guardian/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = henry.boswell.Guardian;
@@ -286,6 +325,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Guardian/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = henry.boswell.Guardian;

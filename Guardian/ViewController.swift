@@ -9,16 +9,65 @@
 import UIKit
 import CoreData
 import Foundation
+import ActionCableClient
+
 
 class ViewController: UIViewController  {
 
     
     
+   
+    let client = ActionCableClient(url: URL(string:"wss://guardian-app-v1.herokuapp.com/cable")!)
+    //wss://actioncable-echo.herokuapp.com/
+    //fathomless-spire-33422.herokuapp.com/
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
+        
+        print("made it here")
+        client.connect()
+        
+        self.client.willConnect = {
+            print("Will Connect")
+        }
+        
+        
+        self.client.onConnected = {
+            print("Connected to \(self.client.url)")
+        }
+        
+        self.client.onDisconnected = {(error: ConnectionError?) in
+            print("Disconected with error: \(error)")
+        }
+        
+        self.client.willReconnect = {
+            print("Reconnecting to \(self.client.url)")
+            return true
+        }
+        let roomChannel = client.create("RoomChannel")
+        
+        roomChannel.onReceive = { (JSON : Any?, error : Error?) in
+            print("Received", JSON, error)
+        }
+        
+        // A channel has successfully been subscribed to.
+        roomChannel.onSubscribed = {
+            print("Yay!")
+        }
+        
+        // A channel was unsubscribed, either manually or from a client disconnect.
+        roomChannel.onUnsubscribed = {
+            print("Unsubscribed")
+        }
+        
+        // The attempt at subscribing to a channel was rejected by the server.
+        roomChannel.onRejected = {
+            print("Rejected")
+        }
+
         //UINavigationBar.a
             //hexStringToUIColor(hex: "0x1D3557")
         
@@ -36,6 +85,8 @@ class ViewController: UIViewController  {
         nav?.barTintColor = UIColor(netHex:0x1D3557)
         //self.navigationBar.barTintColor = UIColor.orangeColor()
         
+        
+       
     }
     
     

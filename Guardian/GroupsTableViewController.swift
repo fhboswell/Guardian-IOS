@@ -9,13 +9,14 @@
 import UIKit
 import CoreData
 
+
 class GroupsTableViewController: UITableViewController {
 
     
     
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
-    
+     //let client = ActionCableClient(url: URL(string:"ws://guardian-app-v1.herokuapp.com/cable")!)
     
     
     override func viewDidLoad() {
@@ -23,6 +24,10 @@ class GroupsTableViewController: UITableViewController {
         initalizeFetchedResultsController()
         tableView.reloadData()
         getGroupDataFromServer()
+        
+              
+        //self.client.connect()
+
         
         
         //var nav = self.navigationController?.navigationBar
@@ -78,7 +83,7 @@ class GroupsTableViewController: UITableViewController {
             
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
-                    print(json?[1])
+                    
                     
                     for group in json! {
                         let addGroup = group as! [String:AnyObject]
@@ -90,6 +95,7 @@ class GroupsTableViewController: UITableViewController {
                         group.title = addGroup["title"] as! String?
                         let groupID = addGroup["id"] as! Int
                         group.id = "\(groupID)"
+                        print(group)
                     }
                 }catch{
                     
