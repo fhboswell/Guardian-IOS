@@ -12,6 +12,7 @@
 		94289A191EA2CAFC00C73ED3 /* GroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94289A181EA2CAFC00C73ED3 /* GroupData.swift */; };
 		94289A1B1EA2D54B00C73ED3 /* IndividualData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */; };
 		94289A1D1EA2D9D300C73ED3 /* ActionCableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94289A1C1EA2D9D300C73ED3 /* ActionCableController.swift */; };
+		94289A1F1EA2FD0D00C73ED3 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94289A1E1EA2FD0D00C73ED3 /* SwiftyJSON.framework */; };
 		94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FA71E1C9530001C907E /* AppDelegate.swift */; };
 		94424FAA1E1C9530001C907E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FA91E1C9530001C907E /* ViewController.swift */; };
 		94424FAD1E1C9530001C907E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94424FAB1E1C9530001C907E /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		94289A181EA2CAFC00C73ED3 /* GroupData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupData.swift; sourceTree = "<group>"; };
 		94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualData.swift; sourceTree = "<group>"; };
 		94289A1C1EA2D9D300C73ED3 /* ActionCableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCableController.swift; sourceTree = "<group>"; };
+		94289A1E1EA2FD0D00C73ED3 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		94424FA41E1C9530001C907E /* Guardian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guardian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94424FA71E1C9530001C907E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94424FA91E1C9530001C907E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			files = (
 				94289A141EA1B96700C73ED3 /* ActionCableClient.framework in Frameworks */,
 				94289A161EA1B96F00C73ED3 /* Starscream.framework in Frameworks */,
+				94289A1F1EA2FD0D00C73ED3 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +61,7 @@
 		94289A121EA1B96700C73ED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94289A1E1EA2FD0D00C73ED3 /* SwiftyJSON.framework */,
 				94289A151EA1B96F00C73ED3 /* Starscream.framework */,
 				94289A131EA1B96700C73ED3 /* ActionCableClient.framework */,
 			);
@@ -178,6 +182,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ActionCableClient.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);

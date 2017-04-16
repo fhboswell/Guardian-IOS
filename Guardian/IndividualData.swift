@@ -26,10 +26,13 @@ class IndividualData  {
         
         
     }
-    
+    var group :String?
     
     func getIndividualDataFromServer(group :String){
         purge("Individual")
+        
+        
+        self.group = group
         let token = KeychainController.loadToken()!
         print(token)
         
@@ -61,7 +64,7 @@ class IndividualData  {
                 
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
-                    print(json?[1] as Any)
+                    //print(json?[1] as Any)
                     
                     for individual in json! {
                         let addIndividual = individual 
@@ -72,7 +75,7 @@ class IndividualData  {
                         let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
                         individual.name = addIndividual["name"] as! String?
                         individual.check = addIndividual["check"] as! String?
-                        print(individual.check ?? "default value")
+                        //print(individual.check ?? "default value")
                         
                         
                     }
@@ -83,12 +86,33 @@ class IndividualData  {
                     
                 }
             }
-            
+            //self.fetchAndEdit()
         }
         task.resume()
         
         
         
+        
+    }
+    
+    
+    
+    func fetchAndEdit(group :Int, name :String, check :String){
+        //if(group == self.group){
+            let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Individual")
+            //let name = "Henry"
+            fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+            
+            do {
+                let fetchedEmployees = try moc.fetch(fetchRequest) as! [Individual]
+                fetchedEmployees.first?.check = check
+                print(fetchedEmployees)
+            } catch {
+                fatalError("Failed to fetch employees: \(error)")
+            }
+       // }
+
     }
 
 

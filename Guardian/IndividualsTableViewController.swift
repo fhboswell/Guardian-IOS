@@ -21,6 +21,7 @@ class IndividualsTableViewController: UITableViewController {
         print(group)
         initalizeFetchedResultsController()
         IndividualData.sharedInstance.getIndividualDataFromServer(group: group)
+        
       
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -30,8 +31,14 @@ class IndividualsTableViewController: UITableViewController {
     
     func initalizeFetchedResultsController(){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Individual")
-        let sort = NSSortDescriptor(key: "check", ascending: false)
+        let sort = NSSortDescriptor(key: "name", ascending: false)
         request.sortDescriptors = [sort]
+        
+        let sortAgain = NSSortDescriptor(key: "check", ascending: false)
+        request.sortDescriptors = [sortAgain]
+
+        
+        
         
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -55,12 +62,13 @@ class IndividualsTableViewController: UITableViewController {
                 fatalError("Failed to initialize ")
         }
         cell.textLabel?.text = selectedIndividual.name
-        if(selectedIndividual.check == "Yes"){
-            cell.backgroundColor = UIColor.green
-        }else{
+        if(selectedIndividual.check == "No"){
             cell.backgroundColor = UIColor.red
+            print("turn it red")
+        }else {
+            cell.backgroundColor = UIColor.green
+            print("turn it green")
         }
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,7 +121,10 @@ extension IndividualsTableViewController:NSFetchedResultsControllerDelegate{
         case .update:
             configureCell(cell: tableView.cellForRow(at: indexPath! as IndexPath)!, indexPath: indexPath! as IndexPath)
         case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath! as IndexPath)
+            //configureCell(cell: tableView.cellForRow(at: indexPath! as IndexPath)!, indexPath: indexPath! as IndexPath)
+            //tableView.moveRow(at: indexPath!, to: newIndexPath! as IndexPath)
+            tableView.reloadData()
+            
         }
     }
     

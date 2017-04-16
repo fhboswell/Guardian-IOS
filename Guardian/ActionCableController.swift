@@ -12,6 +12,7 @@ import UIKit
 import CoreData
 import Foundation
 import ActionCableClient
+import SwiftyJSON
 
 
 class ActionCableController  {
@@ -44,8 +45,24 @@ class ActionCableController  {
         }
         let roomChannel = client.create("RoomChannel")
         
-        roomChannel.onReceive = { (JSON : Any?, error : Error?) in
-            print("Received", JSON ?? "default value", error ?? "default value")
+        roomChannel.onReceive = { (data : Any?, error : Error?) in
+            print("Received", data ?? "no data", error ?? "")
+            if let _ = error {
+                print(error)
+                return
+            }
+           let JSONObject = JSON(data!)
+            let group = JSONObject["id"].rawValue
+            let name = JSONObject["username"].string
+            let check = JSONObject["content"].string
+            
+            
+           // let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
+            
+           IndividualData.sharedInstance.fetchAndEdit(group: group as! Int, name: name as! String, check: check as! String)
+           
+           // let json = try JSONSerialization.jsonObject(with: JSON, options: .allowFragments) as? [String:AnyObject]
+            
         }
         
         // A channel has successfully been subscribed to.
