@@ -21,6 +21,8 @@ let accessGroup = "SecuritySerivice"
 
 let tokenKey = "KeyForToken"
 let idKey = "KeyForID"
+let usernameKey = "KeyForUsername"
+let passwordKey = "KeyForPassword"
 
 // Arguments for the keychain queries
 let kSecClassValue = NSString(format: kSecClass)
@@ -37,6 +39,20 @@ public class KeychainController: NSObject {
     /**
      * Exposed methods to perform save and load queries.
      */
+    public class func saveUsername(token: NSString) {
+        self.save(service: usernameKey as String as NSString, data: token as NSString)
+    }
+    public class func savePassword(ID: NSString) {
+        self.save(service: passwordKey as String as NSString, data: ID as NSString)
+    }
+    
+    public class func loadUsername() -> NSString? {
+        return self.load(service: usernameKey as String as NSString)
+    }
+    public class func loadPassword() -> NSString? {
+        return self.load(service: passwordKey as String as NSString)
+    }
+
     
     public class func saveToken(token: NSString) {
         self.save(service: tokenKey as String as NSString, data: token as NSString)

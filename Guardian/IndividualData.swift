@@ -75,6 +75,7 @@ class IndividualData  {
                         let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
                         individual.name = addIndividual["name"] as! String?
                         individual.check = addIndividual["check"] as! String?
+                        individual.id = String(addIndividual["id"] as! Int)
                         //print(individual.check ?? "default value")
                         
                         

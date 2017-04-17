@@ -100,7 +100,8 @@ class IndividualsTableViewController: UITableViewController {
                 fatalError("Failed to initialize ")
         }
        // cell.textLabel?.text = selectedIndividual.name
-       IndividualData.sharedInstance.changeCheckInStatus(group: group, individual: "54")
+    tableView.deselectRow(at: indexPath, animated: true)
+       IndividualData.sharedInstance.changeCheckInStatus(group: group, individual: selectedIndividual.id!)
         
         //performSegue(withIdentifier: "ShowGroup", sender: tableView.cellForRow(at: indexPath))
         
