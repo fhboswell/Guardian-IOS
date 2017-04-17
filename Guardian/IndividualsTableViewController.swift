@@ -91,6 +91,22 @@ class IndividualsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        guard let selectedIndividual = fetchedResultsController.object(at: indexPath) as? Individual
+            else{
+                fatalError("Failed to initialize ")
+        }
+       // cell.textLabel?.text = selectedIndividual.name
+       IndividualData.sharedInstance.changeCheckInStatus(group: group, individual: "54")
+        
+        //performSegue(withIdentifier: "ShowGroup", sender: tableView.cellForRow(at: indexPath))
+        
+        
+    }
+    
 
 }
 
