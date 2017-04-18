@@ -4,4 +4,4 @@ xcode_project: Guardian.xcodeproj #3
 xcode_scheme: Guardian #4
 xcode_sdk: iphonesimulator10.3 #5
 script:
-    - xcodebuild clean build -sdk iphonesimulator -workspace Guardian.xcworkspace -scheme GuardianTests CODE_SIGNING_REQUIRED=NO
+    - xcodebuild clean build -sdk iphonesimulator -project Guardian.xcodeproj -scheme GuardianTests CODE_SIGNING_REQUIRED=NO
