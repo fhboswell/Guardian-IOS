@@ -17,12 +17,9 @@ import SwiftyJSON
 
 class ActionCableController  {
     static let sharedInstance = ActionCableController()
-
-    //var urlString = URLModel.sharedInstance.actionCableUrl
     
     let client = ActionCableClient(url: URL(string: URLModel.sharedInstance.actionCableUrl)!)
-    //wss://actioncable-echo.herokuapp.com/
-    //fathomless-spire-33422.herokuapp.com/
+    
 
     func initializeActionCable(){
         print("made it here")

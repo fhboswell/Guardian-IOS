@@ -40,10 +40,6 @@ class ViewController: UIViewController  {
         
         let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor(netHex:0x1D3557)
-        //self.navigationBar.barTintColor = UIColor.orangeColor()
-        
-        
-       
     }
     
     
