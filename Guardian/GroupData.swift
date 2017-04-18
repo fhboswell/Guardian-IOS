@@ -18,7 +18,7 @@ class GroupData  {
         
         let token = KeychainController.loadToken()!
         print(token)
-        var urlString = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
+        var urlString = URLModel.sharedInstance.baseUrl
         urlString += KeychainController.loadID()! as String
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "GET"

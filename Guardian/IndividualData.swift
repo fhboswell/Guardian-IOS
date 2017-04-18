@@ -36,7 +36,7 @@ class IndividualData  {
         let token = KeychainController.loadToken()!
         print(token)
         
-        var urlString = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
+        var urlString = URLModel.sharedInstance.baseUrl
         
         urlString += group
         urlString += "/individualsapi"
@@ -121,7 +121,7 @@ class IndividualData  {
         let token = KeychainController.loadToken()!
         print(token)
         
-        var urlString = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
+        var urlString = URLModel.sharedInstance.baseUrl
         
         urlString += group
         urlString += "/individualsapi/"
@@ -137,7 +137,7 @@ class IndividualData  {
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+            guard let _ = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 return  
             }

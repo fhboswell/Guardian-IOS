@@ -20,6 +20,10 @@ class ViewController: UIViewController  {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+         #############################################-----Change URL TYPE HERE-----#############################################
+         */
+        URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()
@@ -56,7 +60,11 @@ class ViewController: UIViewController  {
     @IBAction func LoginButton(_ sender: Any) {
         
         
-        var request = URLRequest(url: URL(string: "https://guardian-app-v1.herokuapp.com/api/v1/auth_user")!)
+        
+        
+        let urlString = URLModel.sharedInstance.authUrl
+        
+        var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         
         

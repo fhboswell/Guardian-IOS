@@ -53,7 +53,6 @@ public class KeychainController: NSObject {
         return self.load(service: passwordKey as String as NSString)
     }
 
-    
     public class func saveToken(token: NSString) {
         self.save(service: tokenKey as String as NSString, data: token as NSString)
     }

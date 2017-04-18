@@ -18,7 +18,9 @@ import SwiftyJSON
 class ActionCableController  {
     static let sharedInstance = ActionCableController()
 
-    let client = ActionCableClient(url: URL(string:"wss://guardian-app-v1.herokuapp.com/cable")!)
+    //var urlString = URLModel.sharedInstance.actionCableUrl
+    
+    let client = ActionCableClient(url: URL(string: URLModel.sharedInstance.actionCableUrl)!)
     //wss://actioncable-echo.herokuapp.com/
     //fathomless-spire-33422.herokuapp.com/
 
@@ -48,7 +50,7 @@ class ActionCableController  {
         roomChannel.onReceive = { (data : Any?, error : Error?) in
             print("Received", data ?? "no data", error ?? "")
             if let _ = error {
-                print(error)
+                print(error ?? "error default")
                 return
             }
            let JSONObject = JSON(data!)
@@ -56,13 +58,8 @@ class ActionCableController  {
             let name = JSONObject["username"].string
             let check = JSONObject["content"].string
             
-            
-           // let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
-            
-           IndividualData.sharedInstance.fetchAndEdit(group: group as! Int, name: name as! String, check: check as! String)
+           IndividualData.sharedInstance.fetchAndEdit(group: group as! Int, name: name!, check: check!)
            
-           // let json = try JSONSerialization.jsonObject(with: JSON, options: .allowFragments) as? [String:AnyObject]
-            
         }
         
         // A channel has successfully been subscribed to.
