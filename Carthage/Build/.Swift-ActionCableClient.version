@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
+  "commitish" : "v0.2.3",
+  "iOS" : [
+    {
+      "hash" : "00320a1fb6d4ea2dc313fc9fa6624eabc25676d7e6389cb1e192db2faa10f1ed",
+      "name" : "ActionCableClient"
+    }
+  ]
+}

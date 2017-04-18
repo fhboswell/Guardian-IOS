@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Guardian/ActionCableController.swift"
+            timestampString = "514175857.860178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "initializeActionCable()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Guardian.ActionCableController.initializeActionCable () -&gt; ()"
+                  moduleName = "Guardian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/henryboswell/Developer/IOS/Guardian-IOS/Guardian/ActionCableController.swift"
+                  timestampString = "513998441.239325"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "549">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Guardian.ActionCableController.(initializeActionCable () -&gt; ()).(closure #5)"
+                  moduleName = "Guardian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/henryboswell/Developer/IOS/Guardian-IOS/Guardian/ActionCableController.swift"
+                  timestampString = "513998441.240896"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
+  "commitish" : "2.0.4",
+  "iOS" : [
+    {
+      "hash" : "72cc7e9eae2ab90de1f6b70e3937f8a04bc3d7c791a721186df46e9e06cba7bc",
+      "name" : "Starscream"
+    }
+  ]
+}
