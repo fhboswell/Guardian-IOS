@@ -1,4 +1,4 @@
-# Guardian-IOS
+# Guardian-IOS [![Build Status](https://travis-ci.org/fhboswell/Guardian-IOS.svg?branch=master)](https://travis-ci.org/fhboswell/Guardian-IOS)
 
 Implementation details:
 * Written in Swift
