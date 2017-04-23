@@ -23,7 +23,7 @@ class ViewController: UIViewController  {
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        URLModel.sharedInstance.makeUrlsDevelopment()
+        //URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()
@@ -40,8 +40,14 @@ class ViewController: UIViewController  {
         
         let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor(netHex:0x1D3557)
+        self.view.backgroundColor = UIColor(netHex:0x1D3557)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
 
     override func didReceiveMemoryWarning() {
