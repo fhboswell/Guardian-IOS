@@ -52,20 +52,25 @@ class SignUpViewController: UIViewController  {
   
         
         
-        let urlString = URLModel.sharedInstance.authUrl
+        let urlString = "http://localhost:3000/users.json"
         
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         
         
         
-        var postString = "email="
+        var postString = "user[email]=user112@examle.com"
         postString += EmailField.text!
-        postString += "&password="
+        postString += "&user[password]=password"
         postString += PasswordField.text!
         
+       // var values: [String: AnyObject] = [:]
+        //values["item"] = "value" as AnyObject
         
-        request.httpBody = postString.data(using: .utf8)
+        
+        //request.httpBody = try! JSONSerialization.data(withJSONObject: values, options: [])
+        
+       request.httpBody = postString.data(using: .utf8)
         print(postString)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -81,9 +86,10 @@ class SignUpViewController: UIViewController  {
             //let responseString = String(data: data, encoding: .utf8)
             do{
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-                let userJson = json["user"] as! [String:Any]
-                let userID = userJson["id"] as! Int
-                self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString)
+                print(json)
+                //let userJson = json["user"] as! [String:Any]
+                //let userID = userJson["id"] as! Int
+               // self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString)
             }catch{
                 self.loginUnsucessful()
             }
