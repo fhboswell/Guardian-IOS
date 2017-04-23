@@ -23,7 +23,7 @@ class ViewController: UIViewController  {
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        //URLModel.sharedInstance.makeUrlsDevelopment()
+        URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()

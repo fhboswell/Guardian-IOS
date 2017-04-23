@@ -52,25 +52,31 @@ class SignUpViewController: UIViewController  {
   
         
         
-        let urlString = "http://localhost:3000/users.json"
+        makeAccount()
+    }
+    
+    
+    
+    
+    
+    
+    func makeAccount(){
+        
+        
+        
+        let urlString = URLModel.sharedInstance.createUrl
         
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
         
         
         
-        var postString = "user[email]=user112@examle.com"
+        var postString = "user[email]="
         postString += EmailField.text!
-        postString += "&user[password]=password"
+        postString += "&user[password]="
         postString += PasswordField.text!
         
-       // var values: [String: AnyObject] = [:]
-        //values["item"] = "value" as AnyObject
-        
-        
-        //request.httpBody = try! JSONSerialization.data(withJSONObject: values, options: [])
-        
-       request.httpBody = postString.data(using: .utf8)
+        request.httpBody = postString.data(using: .utf8)
         print(postString)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -78,30 +84,38 @@ class SignUpViewController: UIViewController  {
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 {           // check for http errors
+                print("statusCode should be 201, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
+                self.signUpUnsucessful()
             }
             
-            //let responseString = String(data: data, encoding: .utf8)
             do{
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
                 print(json)
-                //let userJson = json["user"] as! [String:Any]
-                //let userID = userJson["id"] as! Int
-               // self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString)
+                
+               self.loginToAccount()
             }catch{
-                self.loginUnsucessful()
+                self.signUpUnsucessful()
             }
-            
-            //print("responseString = \(responseString)")
-        }
+                    }
         task.resume()
+        
+        
+        
     }
     
-    func loginUnsucessful(){
+    
+    func loginToAccount(){
+        
+        
+    }
+    
+    
+    
+    func signUpUnsucessful(){
         DispatchQueue.main.async {
-            self.alert(message: "Wrong Username or Password")
+            self.alert(message: "Email already in use")
         }
     }
     
@@ -114,6 +128,7 @@ class SignUpViewController: UIViewController  {
             let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
             user.token = token as String
             self.performSegue(withIdentifier: "login", sender: self)
+            
         }
         
         
