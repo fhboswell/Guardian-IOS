@@ -85,8 +85,7 @@
                         <outlet property="EmailField" destination="Pde-YA-aOc" id="rdP-Nf-zsZ"/>
                         <outlet property="PasswordField" destination="YMJ-xK-0ws" id="LOC-cr-WTz"/>
                         <segue destination="QrE-5P-QFg" kind="show" identifier="login" id="F9a-Le-Jex"/>
-                        <segue destination="BKJ-v3-VFZ" kind="presentation" identifier="SignUpIdent" id="eyQ-Qc-xci"/>
-                        <segue destination="BKJ-v3-VFZ" kind="show" identifier="SignUpIdent" id="o2x-AD-w58"/>
+                        <segue destination="BKJ-v3-VFZ" kind="presentation" identifier="SignUpIdent" id="cqE-ih-4uI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -252,7 +251,7 @@
                         <outlet property="EmailField" destination="ybl-N3-uKu" id="v2n-fO-I9y"/>
                         <outlet property="PasswordConfirmField" destination="obl-bn-WXg" id="djt-zb-5X6"/>
                         <outlet property="PasswordField" destination="dgP-G9-Cep" id="weu-4g-xkV"/>
-                        <segue destination="QrE-5P-QFg" kind="show" id="vDp-tJ-DKh"/>
+                        <segue destination="QrE-5P-QFg" kind="show" identifier="LoginAfterSignup" id="vDp-tJ-DKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pne-3P-Uq1" sceneMemberID="firstResponder"/>
@@ -262,6 +261,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vDp-tJ-DKh"/>
-        <segue reference="o2x-AD-w58"/>
     </inferredMetricsTieBreakers>
 </document>

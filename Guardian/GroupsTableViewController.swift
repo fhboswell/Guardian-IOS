@@ -24,6 +24,8 @@ class GroupsTableViewController: UITableViewController {
         initalizeFetchedResultsController()
         tableView.reloadData()
         GroupData.sharedInstance.getGroupDataFromServer()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
     
     }
 

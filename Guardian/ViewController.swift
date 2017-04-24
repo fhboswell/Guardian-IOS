@@ -12,7 +12,7 @@ import Foundation
 import ActionCableClient
 
 
-class ViewController: UIViewController  {
+class ViewController: UIViewController, AutoLogin  {
 
     
     
@@ -34,6 +34,11 @@ class ViewController: UIViewController  {
             //hexStringToUIColor(hex: "0x1D3557")
         
         
+    }
+    
+    func executeSeuge() {
+        self.performSegue(withIdentifier: "login", sender: self)
+        print("made it")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,9 +69,22 @@ class ViewController: UIViewController  {
         
         //SignUpIdent
         print("signup")
+        
+    
+        
+        
         self.performSegue(withIdentifier: "SignUpIdent", sender: self)
         
         
+    }
+    
+   
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SignUpIdent" {
+            let secondController = segue.destination as! SignUpViewController
+            secondController.delegate = self
+        }
     }
     @IBAction func LoginButton(_ sender: Any) {
         
