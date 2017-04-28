@@ -12,6 +12,9 @@ import Foundation
 
 
 class IndividualData  {
+    
+    var delegate: CreateSuccess? = nil
+    
     static let sharedInstance = IndividualData()
     func purge(_ entityName:String){
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -26,6 +29,8 @@ class IndividualData  {
         
         
     }
+    
+    
     var group :String?
     
     func getIndividualDataFromServer(group :String){
@@ -195,9 +200,11 @@ class IndividualData  {
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 204 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
+            }else{
+                self.delegate?.executeSeuge()
             }
             
             //let responseString = String(data: data, encoding: .utf8)
@@ -235,4 +242,7 @@ class IndividualData  {
 
 
 
+}
+protocol CreateSuccess {
+    func executeSeuge()
 }

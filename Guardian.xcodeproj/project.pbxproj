@@ -26,6 +26,7 @@
 		94863BD61EA5AF1500579D25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94863BD51EA5AF1500579D25 /* Info.plist */; };
 		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 		949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */; };
+		949FCA3B1EB33BEA00DC01BC /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		94863BD51EA5AF1500579D25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsViewController.swift; sourceTree = "<group>"; };
 		949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIndividualViewController.swift; sourceTree = "<group>"; };
+		949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				941415161EAC57ED0001C832 /* SignUpViewController.swift */,
 				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
 				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
+				949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */,
 				94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */,
 				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
 				949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */,
@@ -215,6 +218,7 @@
 				94863BD41EA5625700579D25 /* URLModel.swift in Sources */,
 				94289A1D1EA2D9D300C73ED3 /* ActionCableController.swift in Sources */,
 				949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */,
+				949FCA3B1EB33BEA00DC01BC /* AddGroupViewController.swift in Sources */,
 				94289A191EA2CAFC00C73ED3 /* GroupData.swift in Sources */,
 				945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,

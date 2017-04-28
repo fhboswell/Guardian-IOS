@@ -32,6 +32,17 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func AddGroupButton(_ sender: Any) {
+        print("signup")
+        
+        
+        
+        
+        self.performSegue(withIdentifier: "AddGroup", sender: self)
+        
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

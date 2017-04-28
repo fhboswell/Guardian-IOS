@@ -22,6 +22,7 @@ class URLModel  {
     var baseUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
     var authUrl = "https://guardian-app-v1.herokuapp.com/api/v1/auth_user"
     var createUrl = "https://guardian-app-v1.herokuapp.com/users.json"
+    var createGroupUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi"
    
     /*
     var groupDataGetUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
@@ -34,6 +35,7 @@ class URLModel  {
         baseUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
         authUrl = "https://guardian-app-v1.herokuapp.com/api/v1/auth_user"
         createUrl = "https://guardian-app-v1.herokuapp.com/users.json"
+        createGroupUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi"
 
     }
     func makeUrlsDevelopment(){
@@ -42,6 +44,7 @@ class URLModel  {
         baseUrl = "http://localhost:3000/api/v1/groupsapi/"
         authUrl = "http://localhost:3000/api/v1/auth_user"
         createUrl = "http://localhost:3000/users.json"
+        createGroupUrl = "http://localhost:3000/api/v1/groupsapi"
     }
     
 

@@ -1,18 +1,18 @@
 //
-//  AddIndividualViewController.swift
+//  AddGroupViewController.swift
 //  Guardian
 //
-//  Created by Henry Boswell on 4/27/17.
+//  Created by Henry Boswell on 4/28/17.
 //  Copyright © 2017 com.project. All rights reserved.
 //
 
 import UIKit
 
-class AddIndividualViewController: UIViewController, CreateSuccess{
+class AddGroupViewController: UIViewController, CreateGroupSuccess {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        IndividualData.sharedInstance.delegate = self
+        GroupData.sharedInstance.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -22,21 +22,21 @@ class AddIndividualViewController: UIViewController, CreateSuccess{
         // Dispose of any resources that can be recreated.
     }
     
-
     @IBOutlet weak var NameField: UITextField!
-    @IBOutlet weak var EmailField: UITextField!
-    
+
+    @IBOutlet weak var DescriptionField: UITextField!
     
     @IBAction func AddButton(_ sender: Any) {
         
-       IndividualData.sharedInstance.createIndividualWithGuardian(email:EmailField.text!, name: NameField.text!)
-       //  self.dismiss(animated: true, completion: nil)
+        GroupData.sharedInstance.createGroup(description: DescriptionField.text!, name: NameField.text!)
+        //  self.dismiss(animated: true, completion: nil)
     }
     
     func executeSeuge() {
         self.dismiss(animated: true, completion: nil)
         print("made it")
     }
+    
     /*
     // MARK: - Navigation
 
