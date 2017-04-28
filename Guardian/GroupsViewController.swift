@@ -23,14 +23,17 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         GroupTableView.dataSource = self
         
         initalizeFetchedResultsController()
-        GroupTableView.reloadData()
-        GroupData.sharedInstance.getGroupDataFromServer()
+        
+        //GroupData.sharedInstance.getGroupDataFromServer()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         
         
 
 
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        GroupData.sharedInstance.getGroupDataFromServer()
     }
     @IBAction func AddGroupButton(_ sender: Any) {
         print("signup")

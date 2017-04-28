@@ -25,7 +25,7 @@ class IndividualsViewController: UIViewController,  UITableViewDataSource, UITab
         IndividualTableView.delegate = self
         IndividualTableView.dataSource = self
         initalizeFetchedResultsController()
-        IndividualData.sharedInstance.getIndividualDataFromServer(group: group)
+       // IndividualData.sharedInstance.getIndividualDataFromServer(group: group)
         
         
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()

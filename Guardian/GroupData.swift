@@ -15,8 +15,23 @@ class GroupData  {
     static let sharedInstance = GroupData()
     var delegate: CreateGroupSuccess? = nil
     
-    func getGroupDataFromServer(){
+    func purge(_ entityName:String){
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let venueFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entityName )
+        do {
+            let fetched = try moc.fetch(venueFetch) as! [NSManagedObject]
+            fetched.forEach({moc.delete($0)})
+            
+        } catch {
+            print("Something went wrong.\n")
+        }
         
+        
+    }
+    
+    func getGroupDataFromServer(){
+        purge("Group")
+
         let token = KeychainController.loadToken()!
         print(token)
         var urlString = URLModel.sharedInstance.baseUrl

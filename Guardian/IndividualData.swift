@@ -69,7 +69,7 @@ class IndividualData  {
                 
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
-                    print(json?[0] as Any)
+                    //print(json?[0] as Any)
                     
                     for individual in json! {
                         let addIndividual = individual 
