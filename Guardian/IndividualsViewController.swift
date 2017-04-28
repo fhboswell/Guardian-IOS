@@ -30,6 +30,18 @@ class IndividualsViewController: UIViewController,  UITableViewDataSource, UITab
         
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    @IBAction func AddIndividual(_ sender: Any) {
+        print("signup")
+        
+        
+        
+        
+        self.performSegue(withIdentifier: "AddIndividual", sender: self)
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        IndividualData.sharedInstance.getIndividualDataFromServer(group: group)
+    }
     
     
     
@@ -41,16 +53,10 @@ class IndividualsViewController: UIViewController,  UITableViewDataSource, UITab
         
         let sortAgain = NSSortDescriptor(key: "check", ascending: false)
         request.sortDescriptors = [sortAgain]
-        
-        
-        
-        
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-        
         fetchedResultsController.delegate = self
-        
         do{
             try fetchedResultsController.performFetch()
             print(fetchedResultsController.fetchedObjects ?? "default value")
