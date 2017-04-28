@@ -89,6 +89,8 @@ class SignUpViewController: UIViewController  {
         postString += EmailField.text!
         postString += "&user[password]="
         postString += PasswordField.text!
+        postString += "&user[type_key]="
+        postString += "Admin"
         
         request.httpBody = postString.data(using: .utf8)
         print(postString)
@@ -134,6 +136,7 @@ class SignUpViewController: UIViewController  {
         postString += EmailField.text!
         postString += "&password="
         postString += PasswordField.text!
+        
         
         
         request.httpBody = postString.data(using: .utf8)
