@@ -20,12 +20,12 @@
 		94424FB01E1C9530001C907E /* Guardian.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94424FAE1E1C9530001C907E /* Guardian.xcdatamodeld */; };
 		94424FB21E1C9530001C907E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB11E1C9530001C907E /* Assets.xcassets */; };
 		94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB31E1C9530001C907E /* LaunchScreen.storyboard */; };
-		94424FBD1E1C9870001C907E /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */; };
 		945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945127071EAEE80F001FA4BD /* GroupsViewController.swift */; };
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
 		947AEEF81E1EF4790042659F /* IndividualsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF71E1EF4790042659F /* IndividualsTableViewController.swift */; };
 		94863BD41EA5625700579D25 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863BD31EA5625700579D25 /* URLModel.swift */; };
 		94863BD61EA5AF1500579D25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94863BD51EA5AF1500579D25 /* Info.plist */; };
+		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,12 +43,12 @@
 		94424FAF1E1C9530001C907E /* Guardian.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Guardian.xcdatamodel; sourceTree = "<group>"; };
 		94424FB11E1C9530001C907E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94424FB41E1C9530001C907E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		945127071EAEE80F001FA4BD /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		947AEEF71E1EF4790042659F /* IndividualsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsTableViewController.swift; sourceTree = "<group>"; };
 		94863BD31EA5625700579D25 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		94863BD51EA5AF1500579D25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +102,9 @@
 				941415161EAC57ED0001C832 /* SignUpViewController.swift */,
 				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
 				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
-				94424FBC1E1C9870001C907E /* GroupsTableViewController.swift */,
 				94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */,
 				947AEEF71E1EF4790042659F /* IndividualsTableViewController.swift */,
+				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
 				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
@@ -215,7 +215,7 @@
 				94289A1B1EA2D54B00C73ED3 /* IndividualData.swift in Sources */,
 				94863BD41EA5625700579D25 /* URLModel.swift in Sources */,
 				94289A1D1EA2D9D300C73ED3 /* ActionCableController.swift in Sources */,
-				94424FBD1E1C9870001C907E /* GroupsTableViewController.swift in Sources */,
+				949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */,
 				94289A191EA2CAFC00C73ED3 /* GroupData.swift in Sources */,
 				945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,

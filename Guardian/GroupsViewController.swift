@@ -27,8 +27,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         GroupData.sharedInstance.getGroupDataFromServer()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         
-        GroupTableView.delegate = self
-        GroupTableView.dataSource = self
+        
 
 
         // Do any additional setup after loading the view.
@@ -106,7 +105,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         if let navCon = destination as? UINavigationController{
             destination = navCon.visibleViewController!
         }
-        if let ITVC = destination as? IndividualsTableViewController {
+        if let IVC = destination as? IndividualsViewController {
             if let identifier = segue.identifier{
                 switch identifier{
                 case "ShowGroup":
@@ -120,7 +119,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                             let group = selectedGroup.id
                             
                             
-                            ITVC.group = group!
+                            IVC.group = group!
                         }
                     }
                 default: break
