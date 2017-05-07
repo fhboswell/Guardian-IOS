@@ -1,3 +1,4 @@
 github "SwiftyJSON/SwiftyJSON" "3.1.4"
+github "aws/aws-sdk-ios" "2.5.6"
 github "daltoniam/starscream" "2.0.4"
 github "danielrhodes/Swift-ActionCableClient" "v0.2.3"

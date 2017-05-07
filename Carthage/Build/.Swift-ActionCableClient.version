@@ -1,10 +1,22 @@
 {
-  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
   "commitish" : "v0.2.3",
   "iOS" : [
     {
-      "hash" : "00320a1fb6d4ea2dc313fc9fa6624eabc25676d7e6389cb1e192db2faa10f1ed",
+      "hash" : "760d4e2b5588b420c1b44e006877ce1b9370ed6690367f2beaa176f75fe010c4",
       "name" : "ActionCableClient"
     }
+  ],
+  "xcodeVersion" : "Xcode 8.3.2\nBuild version 8E2002",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+    {
+      "hash" : "bc4c68e0d6595836429ca7dbaf315edc5cb4903a96dfeb5c7990f68d96fde8ef",
+      "name" : "ActionCableClient"
+    }
+  ],
+  "Mac" : [
+
   ]
 }
