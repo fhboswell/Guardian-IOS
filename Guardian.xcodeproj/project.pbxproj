@@ -32,7 +32,6 @@
 		94DD0E631EBEFF5300AF3802 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DD0E621EBEFF5300AF3802 /* AWSS3.framework */; };
 		94DD0E641EBEFF5300AF3802 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94DD0E621EBEFF5300AF3802 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94DD0E671EBF043F00AF3802 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94DD0E661EBF043F00AF3802 /* Keys.plist */; };
-		94DD0E691EBF055800AF3802 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94DD0E681EBF055800AF3802 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,7 +74,6 @@
 		94DD0E5E1EBEFF2100AF3802 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Carthage/Build/iOS/AWSCore.framework; sourceTree = "<group>"; };
 		94DD0E621EBEFF5300AF3802 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Carthage/Build/iOS/AWSS3.framework; sourceTree = "<group>"; };
 		94DD0E661EBF043F00AF3802 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-		94DD0E681EBF055800AF3802 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				94DD0E661EBF043F00AF3802 /* Keys.plist */,
-				94DD0E681EBF055800AF3802 /* .gitignore */,
 				94424FA71E1C9530001C907E /* AppDelegate.swift */,
 				94863BD31EA5625700579D25 /* URLModel.swift */,
 				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
@@ -216,7 +213,6 @@
 				94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */,
 				94424FB21E1C9530001C907E /* Assets.xcassets in Resources */,
 				94424FAD1E1C9530001C907E /* Main.storyboard in Resources */,
-				94DD0E691EBF055800AF3802 /* .gitignore in Resources */,
 				94DD0E671EBF043F00AF3802 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
