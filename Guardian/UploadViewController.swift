@@ -35,7 +35,7 @@ class UploadViewController: UIViewController {
         let downloadRequest = AWSS3TransferManagerDownloadRequest()
         
         downloadRequest?.bucket = "guardian-v1-storage"
-        downloadRequest?.key = "filenamee/myImage.jpg"
+        downloadRequest?.key = "myImage.jpg"
         downloadRequest?.downloadingFileURL = downloadingFileURL
         
         transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in

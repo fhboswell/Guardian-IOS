@@ -23,7 +23,7 @@ class ViewController: UIViewController, AutoLogin  {
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        URLModel.sharedInstance.makeUrlsDevelopment()
+        //URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()
@@ -123,8 +123,11 @@ class ViewController: UIViewController, AutoLogin  {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
                     let userJson = json["user"] as! [String:Any]
                     let userID = userJson["id"] as! Int
-                    self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString)
-                }catch{
+                    print(userJson)
+                    print(userJson["type_key"])
+                   
+                    self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString)
+                    }catch{
                    // self.loginUnsucessful()
                 }
             }
@@ -140,7 +143,7 @@ class ViewController: UIViewController, AutoLogin  {
         }
     }
     
-    func loginSucessful(token: NSString, ID: NSString){
+    func loginSucessful(token: NSString, ID: NSString, type_key: NSString){
         
         DispatchQueue.main.async {
             KeychainController.saveToken(token: token)
@@ -148,7 +151,8 @@ class ViewController: UIViewController, AutoLogin  {
             let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
             user.token = token as String
-            self.performSegue(withIdentifier: "login", sender: self)
+            user.type_key = type_key as String
+            self.performSegue(withIdentifier: type_key as String, sender: self)
         }
         
         

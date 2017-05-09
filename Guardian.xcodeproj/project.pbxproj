@@ -94,6 +94,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		941DEA891EC160DA00001426 /* Guardian */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Guardian;
+			sourceTree = "<group>";
+		};
+		941DEA8A1EC160E200001426 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
+				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
+				949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */,
+				94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */,
+				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
+				949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */,
+			);
+			name = Admin;
+			sourceTree = "<group>";
+		};
+		941DEA8B1EC1610300001426 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				94424FA71E1C9530001C907E /* AppDelegate.swift */,
+				94863BD31EA5625700579D25 /* URLModel.swift */,
+				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
+				94289A1C1EA2D9D300C73ED3 /* ActionCableController.swift */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		94289A121EA1B96700C73ED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,24 +157,17 @@
 		94424FA61E1C9530001C907E /* Guardian */ = {
 			isa = PBXGroup;
 			children = (
-				946EE6061EBF10950027ECC6 /* Keys.plist */,
-				94424FA71E1C9530001C907E /* AppDelegate.swift */,
-				94863BD31EA5625700579D25 /* URLModel.swift */,
-				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
-				94289A1C1EA2D9D300C73ED3 /* ActionCableController.swift */,
 				94424FA91E1C9530001C907E /* ViewController.swift */,
 				941415161EAC57ED0001C832 /* SignUpViewController.swift */,
-				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
-				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
-				949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */,
-				94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */,
-				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
-				949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */,
-				94424FAB1E1C9530001C907E /* Main.storyboard */,
 				940CA3501EC13F2500292929 /* UploadViewController.swift */,
+				941DEA891EC160DA00001426 /* Guardian */,
+				941DEA8B1EC1610300001426 /* Support */,
+				941DEA8A1EC160E200001426 /* Admin */,
+				94424FAB1E1C9530001C907E /* Main.storyboard */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94863BD51EA5AF1500579D25 /* Info.plist */,
+				946EE6061EBF10950027ECC6 /* Keys.plist */,
 				94424FAE1E1C9530001C907E /* Guardian.xcdatamodeld */,
 			);
 			path = Guardian;
