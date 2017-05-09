@@ -490,11 +490,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j73-49-g96">
+                                <rect key="frame" x="293" y="122" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photo"/>
+                                <connections>
+                                    <action selector="AddPhoto:" destination="Pfk-ct-dD5" eventType="touchUpInside" id="zve-O2-m07"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4J-Yq-xFT">
+                                <rect key="frame" x="37" y="94" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="DashboardTableView" destination="Mjo-8K-SF5" id="khf-3q-wTX"/>
+                        <outlet property="ImageView" destination="D4J-Yq-xFT" id="ggd-5H-bt2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjI-Am-ViI" userLabel="First Responder" sceneMemberID="firstResponder"/>

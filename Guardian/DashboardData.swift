@@ -65,7 +65,7 @@ class DashboardData  {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
                    
-                    print(json)
+                    print(json!)
                     for individual in json! {
                         let addIndividual = individual
                         
