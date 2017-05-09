@@ -23,7 +23,7 @@ class ViewController: UIViewController, AutoLogin  {
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        //URLModel.sharedInstance.makeUrlsDevelopment()
+        URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()
@@ -37,7 +37,7 @@ class ViewController: UIViewController, AutoLogin  {
     }
     
     func executeSeuge() {
-        self.performSegue(withIdentifier: "login", sender: self)
+        self.performSegue(withIdentifier: "Admin", sender: self)
         print("made it")
     }
     
@@ -124,7 +124,7 @@ class ViewController: UIViewController, AutoLogin  {
                     let userJson = json["user"] as! [String:Any]
                     let userID = userJson["id"] as! Int
                     print(userJson)
-                    print(userJson["type_key"])
+                    print(userJson["type_key"]!)
                    
                     self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString)
                     }catch{

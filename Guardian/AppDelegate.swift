@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             keys = NSDictionary(contentsOfFile: path)
         }
         if let dict = keys {
-            print(dict["key"] as? String)
             key = dict["key"] as? String
         }
         

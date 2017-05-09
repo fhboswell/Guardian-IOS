@@ -192,7 +192,7 @@ class IndividualData  {
         
         
         request.httpBody = postString.data(using: .utf8)
-        print(request.httpBody)
+        print(request.httpBody!)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error

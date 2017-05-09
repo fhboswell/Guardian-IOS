@@ -27,7 +27,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         initalizeFetchedResultsController()
         
         
-        // IndividualData.sharedInstance.getIndividualDataFromServer(group: group)
+        DashboardData.sharedInstance.getDashboardDataFromServer()
         
         
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -49,7 +49,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self as! NSFetchedResultsControllerDelegate
+        fetchedResultsController.delegate = self as NSFetchedResultsControllerDelegate
         do{
             try fetchedResultsController.performFetch()
             print(fetchedResultsController.fetchedObjects ?? "default value")
@@ -89,7 +89,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier2", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier3", for: indexPath)
         // Set up the cell
         configureCell(cell: cell, indexPath: indexPath)
         return cell
@@ -99,7 +99,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
         
         
-        guard let selectedIndividual = fetchedResultsController.object(at: indexPath) as? Individual
+        guard fetchedResultsController.object(at: indexPath) is Individual
             else{
                 fatalError("Failed to initialize ")
         }
@@ -148,6 +148,6 @@ extension DashboardViewController:NSFetchedResultsControllerDelegate{
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        IndividualTableView.endUpdates()
+        DashboardTableView.endUpdates()
     }
 }

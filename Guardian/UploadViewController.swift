@@ -11,7 +11,7 @@ import AWSS3
 
 class UploadViewController: UIViewController {
 
-    
+    /*
     let transferManager = AWSS3TransferManager.default()
     
     @IBOutlet weak var image: UIImageView!
@@ -40,8 +40,8 @@ class UploadViewController: UIViewController {
         
         transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
             
-            if let error = task.error as? NSError {
-                if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+            if let error = task.error as? NSError? {
+                if error?.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: (error?.code)!) {
                     switch code {
                     case .cancelled, .paused:
                         break
@@ -55,12 +55,14 @@ class UploadViewController: UIViewController {
             }
             print("Download complete for: \(String(describing: downloadRequest?.key))")
             self.image.image = UIImage(contentsOfFile: downloadingFileURL.path)
-            let downloadOutput = task.result
+            _ = task.result
             return nil
         })
+ 
         
         
     }
+ */
 
 
     /*

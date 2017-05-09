@@ -32,18 +32,14 @@ class DashboardData  {
     
     var group :String?
     
-    func getIndividualDataFromServer(group :String){
+    func getDashboardDataFromServer(){
         purge("Individual")
         
-        
-        self.group = group
         let token = KeychainController.loadToken()!
         print(token)
         
-        var urlString = URLModel.sharedInstance.baseUrl
+        let urlString = URLModel.sharedInstance.dashboardUrl
         
-        urlString += group
-        urlString += "/individualsapi"
         
         print(urlString)
         var request = URLRequest(url: URL(string: urlString)!)
@@ -68,8 +64,8 @@ class DashboardData  {
                 
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
-                    //print(json?[0] as Any)
-                    
+                   
+                    print(json)
                     for individual in json! {
                         let addIndividual = individual
                         
@@ -191,7 +187,7 @@ class DashboardData  {
         
         
         request.httpBody = postString.data(using: .utf8)
-        print(request.httpBody)
+        //print(request.httpBody)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error

@@ -27,7 +27,6 @@
 		946EE6071EBF10950027ECC6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946EE6061EBF10950027ECC6 /* Keys.plist */; };
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
 		94863BD41EA5625700579D25 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863BD31EA5625700579D25 /* URLModel.swift */; };
-		94863BD61EA5AF1500579D25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94863BD51EA5AF1500579D25 /* Info.plist */; };
 		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 		949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */; };
 		949FCA3B1EB33BEA00DC01BC /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */; };
@@ -101,6 +100,8 @@
 		941DEA891EC160DA00001426 /* Guardian */ = {
 			isa = PBXGroup;
 			children = (
+				941DEA8C1EC1795700001426 /* DashboardViewController.swift */,
+				941DEA8E1EC17A7400001426 /* DashboardData.swift */,
 			);
 			name = Guardian;
 			sourceTree = "<group>";
@@ -167,8 +168,6 @@
 				941DEA891EC160DA00001426 /* Guardian */,
 				941DEA8B1EC1610300001426 /* Support */,
 				941DEA8A1EC160E200001426 /* Admin */,
-				941DEA8C1EC1795700001426 /* DashboardViewController.swift */,
-				941DEA8E1EC17A7400001426 /* DashboardData.swift */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
@@ -209,7 +208,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = com.project;
 				TargetAttributes = {
 					94424FA31E1C9530001C907E = {
@@ -242,7 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94863BD61EA5AF1500579D25 /* Info.plist in Resources */,
 				94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */,
 				94424FB21E1C9530001C907E /* Assets.xcassets in Resources */,
 				94424FAD1E1C9530001C907E /* Main.storyboard in Resources */,
