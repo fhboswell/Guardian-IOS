@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940CA3511EC13F2500292929 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CA3501EC13F2500292929 /* UploadViewController.swift */; };
 		941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941415161EAC57ED0001C832 /* SignUpViewController.swift */; };
 		94289A141EA1B96700C73ED3 /* ActionCableClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94289A131EA1B96700C73ED3 /* ActionCableClient.framework */; };
 		94289A161EA1B96F00C73ED3 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94289A151EA1B96F00C73ED3 /* Starscream.framework */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		940CA3501EC13F2500292929 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		941415161EAC57ED0001C832 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94289A131EA1B96700C73ED3 /* ActionCableClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActionCableClient.framework; path = Carthage/Build/iOS/ActionCableClient.framework; sourceTree = "<group>"; };
 		94289A151EA1B96F00C73ED3 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
@@ -95,6 +97,8 @@
 		94289A121EA1B96700C73ED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94DD0E621EBEFF5300AF3802 /* AWSS3.framework */,
+				94DD0E5E1EBEFF2100AF3802 /* AWSCore.framework */,
 				94289A1E1EA2FD0D00C73ED3 /* SwiftyJSON.framework */,
 				94289A151EA1B96F00C73ED3 /* Starscream.framework */,
 				94289A131EA1B96700C73ED3 /* ActionCableClient.framework */,
@@ -105,8 +109,6 @@
 		94424F9B1E1C9530001C907E = {
 			isa = PBXGroup;
 			children = (
-				94DD0E621EBEFF5300AF3802 /* AWSS3.framework */,
-				94DD0E5E1EBEFF2100AF3802 /* AWSCore.framework */,
 				94424FA61E1C9530001C907E /* Guardian */,
 				94424FA51E1C9530001C907E /* Products */,
 				94289A121EA1B96700C73ED3 /* Frameworks */,
@@ -138,6 +140,7 @@
 				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
 				949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
+				940CA3501EC13F2500292929 /* UploadViewController.swift */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94863BD51EA5AF1500579D25 /* Info.plist */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */,
+				940CA3511EC13F2500292929 /* UploadViewController.swift in Sources */,
 				94424FAA1E1C9530001C907E /* ViewController.swift in Sources */,
 				94289A1B1EA2D54B00C73ED3 /* IndividualData.swift in Sources */,
 				94863BD41EA5625700579D25 /* URLModel.swift in Sources */,
