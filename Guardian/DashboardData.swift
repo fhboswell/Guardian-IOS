@@ -115,10 +115,7 @@ class DashboardData  {
         // }
         
     }
-    
-    
-    
-    
+   
     
     func changeCheckInStatus(group :String, individual :String){
         self.group = group
@@ -153,88 +150,9 @@ class DashboardData  {
             
         }
         task.resume()
-        
-        
-        
-        
     }
     
     
-    
-    func createIndividualWithGuardian(email :String, name :String){
-        
-        //self.group = group
-        let token = KeychainController.loadToken()!
-        print(token)
-        
-        var urlString = URLModel.sharedInstance.baseUrl
-        
-        urlString += group!
-        urlString += "/individualsapi"
-        
-        print(urlString)
-        var request = URLRequest(url: URL(string: urlString)!)
-        
-        
-        request.httpMethod = "POST"
-        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        var postString = "individual[email]="
-        postString += email
-        postString += "&individual[name]="
-        postString += name
-        
-        
-        
-        request.httpBody = postString.data(using: .utf8)
-        //print(request.httpBody)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 204 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            }else{
-                
-            }
-            
-            //let responseString = String(data: data, encoding: .utf8)
-            DispatchQueue.main.async {
-                
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
-                    print(json?[0] as Any)
-                    
-                    for individual in json! {
-                        let addIndividual = individual
-                        
-                        
-                        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                        
-                        let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
-                        individual.name = addIndividual["name"] as! String?
-                        individual.check = addIndividual["check"] as! String?
-                        individual.id = String(addIndividual["id"] as! Int)
-                        //print(individual.check ?? "default value")
-                        
-                        
-                    }
-                }catch{
-                    DispatchQueue.main.async {
-                        //self.alert(message: "website error")
-                    }
-                    
-                }
-            }
-            //self.fetchAndEdit()
-        }
-        task.resume()
-    }
-    
-    
+       
     
 }

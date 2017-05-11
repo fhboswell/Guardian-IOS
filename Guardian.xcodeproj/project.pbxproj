@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		940CA3511EC13F2500292929 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CA3501EC13F2500292929 /* UploadViewController.swift */; };
 		941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941415161EAC57ED0001C832 /* SignUpViewController.swift */; };
 		941DEA8D1EC1795700001426 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941DEA8C1EC1795700001426 /* DashboardViewController.swift */; };
 		941DEA8F1EC17A7400001426 /* DashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941DEA8E1EC17A7400001426 /* DashboardData.swift */; };
@@ -52,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		940CA3501EC13F2500292929 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		941415161EAC57ED0001C832 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		941DEA8C1EC1795700001426 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		941DEA8E1EC17A7400001426 /* DashboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardData.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			children = (
 				94424FA91E1C9530001C907E /* ViewController.swift */,
 				941415161EAC57ED0001C832 /* SignUpViewController.swift */,
-				940CA3501EC13F2500292929 /* UploadViewController.swift */,
 				941DEA891EC160DA00001426 /* Guardian */,
 				941DEA8B1EC1610300001426 /* Support */,
 				941DEA8A1EC160E200001426 /* Admin */,
@@ -289,7 +286,6 @@
 			files = (
 				941DEA8F1EC17A7400001426 /* DashboardData.swift in Sources */,
 				941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */,
-				940CA3511EC13F2500292929 /* UploadViewController.swift in Sources */,
 				94424FAA1E1C9530001C907E /* ViewController.swift in Sources */,
 				94289A1B1EA2D54B00C73ED3 /* IndividualData.swift in Sources */,
 				94863BD41EA5625700579D25 /* URLModel.swift in Sources */,

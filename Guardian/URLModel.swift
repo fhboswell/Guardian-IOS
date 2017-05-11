@@ -24,6 +24,7 @@ class URLModel  {
     var createUrl = "https://guardian-app-v1.herokuapp.com/users.json"
     var createGroupUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi"
     var dashboardUrl = "https://guardian-app-v1.herokuapp.com/api/v1/dashboardapi"
+    var s3url = "http://guardian-v1-storage.s3-us-west-1.amazonaws.com/"
     /*
     var groupDataGetUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"
     var individualDataGetUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi/"

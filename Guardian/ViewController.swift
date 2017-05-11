@@ -23,7 +23,7 @@ class ViewController: UIViewController, AutoLogin  {
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        URLModel.sharedInstance.makeUrlsDevelopment()
+        //URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()
@@ -125,8 +125,20 @@ class ViewController: UIViewController, AutoLogin  {
                     let userID = userJson["id"] as! Int
                     print(userJson)
                     print(userJson["type_key"]!)
-                   
-                    self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString)
+                    print(userJson["selfieurl"]!)
+                    
+                    //var selfieurl: NSString
+                    
+                    if let selfieurl = userJson["selfieurl"] as? NSString{
+                    self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
+                    } else{
+                        let selfieurl = "None"
+                        self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl, uuid: userJson["uuid"] as! NSString)
+                    
+                    }
+                    
+                        
+                    
                     }catch{
                    // self.loginUnsucessful()
                 }
@@ -143,20 +155,37 @@ class ViewController: UIViewController, AutoLogin  {
         }
     }
     
-    func loginSucessful(token: NSString, ID: NSString, type_key: NSString){
+    func loginSucessful(token: NSString, ID: NSString, type_key: NSString, selfieurl: String, uuid: NSString){
         
         DispatchQueue.main.async {
             KeychainController.saveToken(token: token)
             KeychainController.saveID(ID: ID)
+            self.purge("User")
             let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
             user.token = token as String
             user.type_key = type_key as String
+            user.selfieurl = selfieurl
+            user.uuid = uuid as String
             self.performSegue(withIdentifier: type_key as String, sender: self)
         }
         
         
     }
+    func purge(_ entityName:String){
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let venueFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entityName )
+        do {
+            let fetched = try moc.fetch(venueFetch) as! [NSManagedObject]
+            fetched.forEach({moc.delete($0)})
+            
+        } catch {
+            print("Something went wrong.\n")
+        }
+        
+        
+    }
+
     
 
 }

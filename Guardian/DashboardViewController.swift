@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AWSS3
 
 class DashboardViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
@@ -21,6 +22,8 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
     
+    let transferManager = AWSS3TransferManager.default()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -30,9 +33,88 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
         
         DashboardData.sharedInstance.getDashboardDataFromServer()
+        setImage()
+        
+        //cell.textLabel?.text = selectedGroup.title
         
         
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func setImage(){
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        //let name = "Henry"
+        //fetchRequest.predicate = NSPredicate()
+        
+        do {
+            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+            //fetchedUsers.first?.uuid
+            
+            print(fetchedUsers.first?.selfieurl)
+            if fetchedUsers.first?.selfieurl == "None"{
+                return
+            }
+            
+            var filepath = fetchedUsers.first!.selfieurl!
+            //var filepath = advance(fetchedUsers.first?.selfieurl?.startIndex, URLModel.sharedInstance.dashboardUrl.characters.count)
+            
+            //range(of: URLModel.sharedInstance.dashboardUrl)
+            
+           // let awsfilepath = Character(filepath.substring(to: filepath.index(filepath.startIndex, offsetBy: filepath.characters.count)))
+            
+            //let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+            
+            let index  = filepath.index(filepath.startIndex, offsetBy: URLModel.sharedInstance.dashboardUrl.characters.count - 3)
+            //this magic number helps make the selfieurl into an aws filepath
+            
+            //let index = filepath.index(filepath.startIndex, offsetBy: 7)
+            print(filepath.substring(from: index))
+            let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myImage.jpg")
+            
+            let downloadRequest = AWSS3TransferManagerDownloadRequest()
+            
+            downloadRequest?.bucket = "guardian-v1-storage"
+            downloadRequest?.key = filepath.substring(from: index)
+            downloadRequest?.downloadingFileURL = downloadingFileURL
+            
+            
+            
+            transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                
+                if let error = task.error as? NSError {
+                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                        switch code {
+                        case .cancelled, .paused:
+                            break
+                        default:
+                            print("Error downloading: \(downloadRequest?.key) Error: \(error)")
+                        }
+                    } else {
+                        print("Error downloading: \(downloadRequest?.key) Error: \(error)")
+                    }
+                    return nil
+                }
+                print("Download complete for: \(downloadRequest?.key)")
+                self.ImageView.contentMode = .scaleAspectFit
+                self.ImageView.image = UIImage(contentsOfFile: downloadingFileURL.path)
+                let downloadOutput = task.result
+                return nil
+            })
+
+            
+            
+            
+            
+            
+            
+            
+            print(fetchedUsers.first?.uuid)
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+
+        
     }
     
        override func viewDidAppear(_ animated: Bool) {
@@ -102,10 +184,44 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         }
         
         print(imagePath!)
-        
+        upload(imagePath: imagePath!)
+    
         
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    func upload(imagePath: URL){
+        
+        let transferManager = AWSS3TransferManager.default()
+        let uploadingFileURL = imagePath
+        
+        let uploadRequest = AWSS3TransferManagerUploadRequest()
+        
+        uploadRequest?.bucket = "guardian-v1-storage"
+        uploadRequest?.key = "filer/ myTestFile.jpg"
+        uploadRequest?.body = uploadingFileURL
+        
+        transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+            
+            if let error = task.error as? NSError {
+                if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                    switch code {
+                    case .cancelled, .paused:
+                        break
+                    default:
+                        print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                    }
+                } else {
+                    print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                }
+                return nil
+            }
+            
+            let uploadOutput = task.result
+            print("Upload complete for: \(uploadRequest?.key)")
+            return nil
+        })
     }
     /*
     //PickerView Delegate Methods
