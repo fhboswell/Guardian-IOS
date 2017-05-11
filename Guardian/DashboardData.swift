@@ -49,7 +49,7 @@ class DashboardData  {
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+            guard let data = data, error == nil else {                                                 // networking error
                 print("error=\(String(describing: error))")
                 return
             }
@@ -102,7 +102,7 @@ class DashboardData  {
         //if(group == self.group){
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Individual")
-        //let name = "Henry"
+        
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         do {
@@ -153,6 +153,6 @@ class DashboardData  {
     }
     
     
-       
+    
     
 }

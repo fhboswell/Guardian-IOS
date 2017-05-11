@@ -57,13 +57,6 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             }
             
             var filepath = fetchedUsers.first!.selfieurl!
-            //var filepath = advance(fetchedUsers.first?.selfieurl?.startIndex, URLModel.sharedInstance.dashboardUrl.characters.count)
-            
-            //range(of: URLModel.sharedInstance.dashboardUrl)
-            
-           // let awsfilepath = Character(filepath.substring(to: filepath.index(filepath.startIndex, offsetBy: filepath.characters.count)))
-            
-            //let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
             
             let index  = filepath.index(filepath.startIndex, offsetBy: URLModel.sharedInstance.dashboardUrl.characters.count - 3)
             //this magic number helps make the selfieurl into an aws filepath
@@ -193,35 +186,69 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     func upload(imagePath: URL){
         
+        
+        
+        
+        
+        
+        
         let transferManager = AWSS3TransferManager.default()
         let uploadingFileURL = imagePath
         
-        let uploadRequest = AWSS3TransferManagerUploadRequest()
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        //let name = "Henry"
+        //fetchRequest.predicate = NSPredicate()
         
-        uploadRequest?.bucket = "guardian-v1-storage"
-        uploadRequest?.key = "filer/ myTestFile.jpg"
-        uploadRequest?.body = uploadingFileURL
+        do {
+
         
-        transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+            //fetchedUsers.first?.uuid
             
-            if let error = task.error as? NSError {
-                if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
-                    switch code {
-                    case .cancelled, .paused:
-                        break
-                    default:
-                        print("Error uploading: \(uploadRequest?.key) Error: \(error)")
-                    }
-                } else {
-                    print("Error uploading: \(uploadRequest?.key) Error: \(error)")
-                }
-                return nil
+            print(fetchedUsers.first?.selfieurl)
+            if fetchedUsers.first?.selfieurl == "None"{
+                return
             }
             
-            let uploadOutput = task.result
-            print("Upload complete for: \(uploadRequest?.key)")
-            return nil
-        })
+            var uuid = fetchedUsers.first!.uuid!
+            
+            var filepath = "uploads/" + uuid + "/fffile.jpg"
+            
+            
+            let uploadRequest = AWSS3TransferManagerUploadRequest()
+            
+            uploadRequest?.bucket = "guardian-v1-storage"
+            uploadRequest?.key = filepath
+            uploadRequest?.body = uploadingFileURL
+            
+            transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                
+                if let error = task.error as? NSError {
+                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                        switch code {
+                        case .cancelled, .paused:
+                            break
+                        default:
+                            print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                        }
+                    } else {
+                        print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                    }
+                    return nil
+                }
+                
+                let uploadOutput = task.result
+                print("Upload complete for: \(uploadRequest?.key)")
+                return nil
+            })
+                
+            print(fetchedUsers.first?.uuid)
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+        
+            
     }
     /*
     //PickerView Delegate Methods
