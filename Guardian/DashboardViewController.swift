@@ -177,80 +177,14 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         }
         
         print(imagePath!)
-        upload(imagePath: imagePath!)
+         DashboardData.sharedInstance.upload(imagePath: imagePath!)
     
         
         dismiss(animated: true, completion: nil)
         
     }
     
-    func upload(imagePath: URL){
-        
-        
-        
-        
-        
-        
-        
-        let transferManager = AWSS3TransferManager.default()
-        let uploadingFileURL = imagePath
-        
-        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        //let name = "Henry"
-        //fetchRequest.predicate = NSPredicate()
-        
-        do {
-
-        
-            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
-            //fetchedUsers.first?.uuid
-            
-            print(fetchedUsers.first?.selfieurl)
-            if fetchedUsers.first?.selfieurl == "None"{
-                return
-            }
-            
-            var uuid = fetchedUsers.first!.uuid!
-            
-            var filepath = "uploads/" + uuid + "/fffile.jpg"
-            
-            
-            let uploadRequest = AWSS3TransferManagerUploadRequest()
-            
-            uploadRequest?.bucket = "guardian-v1-storage"
-            uploadRequest?.key = filepath
-            uploadRequest?.body = uploadingFileURL
-            
-            transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
-                
-                if let error = task.error as? NSError {
-                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
-                        switch code {
-                        case .cancelled, .paused:
-                            break
-                        default:
-                            print("Error uploading: \(uploadRequest?.key) Error: \(error)")
-                        }
-                    } else {
-                        print("Error uploading: \(uploadRequest?.key) Error: \(error)")
-                    }
-                    return nil
-                }
-                
-                let uploadOutput = task.result
-                print("Upload complete for: \(uploadRequest?.key)")
-                return nil
-            })
-                
-            print(fetchedUsers.first?.uuid)
-        } catch {
-            fatalError("Failed to fetch employees: \(error)")
-        }
-        
-            
-    }
-    /*
+       /*
     //PickerView Delegate Methods
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
     {

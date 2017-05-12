@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 import Foundation
+import AWSS3
 
 
 class DashboardData  {
     
+    let transferManager = AWSS3TransferManager.default()
     
     static let sharedInstance = DashboardData()
     func purge(_ entityName:String){
@@ -95,6 +97,134 @@ class DashboardData  {
         
         
     }
+    
+    
+    func upload(imagePath: URL){
+        
+        
+        
+        
+        
+        
+        
+        let transferManager = AWSS3TransferManager.default()
+        let uploadingFileURL = imagePath
+        
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        //let name = "Henry"
+        //fetchRequest.predicate = NSPredicate()
+        
+        do {
+            
+            
+            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+            //fetchedUsers.first?.uuid
+            
+            print(fetchedUsers.first?.selfieurl)
+            if fetchedUsers.first?.uuid == "None"{
+                return
+            }
+            
+            var uuid = fetchedUsers.first!.uuid!
+            
+            var filepath = "uploads/" + uuid + "/fffile.jpg"
+            
+            
+            let uploadRequest = AWSS3TransferManagerUploadRequest()
+            
+            uploadRequest?.bucket = "guardian-v1-storage"
+            uploadRequest?.key = filepath
+            uploadRequest?.body = uploadingFileURL
+            
+            transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                
+                if let error = task.error as? NSError {
+                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                        switch code {
+                        case .cancelled, .paused:
+                            break
+                        default:
+                            print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                        }
+                    } else {
+                        print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                    }
+                    return nil
+                }
+                
+                let uploadOutput = task.result
+                print("Upload complete for: \(uploadRequest?.key)")
+                //return nil
+                
+                
+                
+                self.changeUrl(filepath: filepath)
+                
+                
+                
+                
+                
+                return nil
+                
+                
+                
+                
+                
+                
+                
+                
+            })
+            
+            print(fetchedUsers.first?.uuid)
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+        
+        
+    }
+    
+    
+    
+    func changeUrl(filepath: String){
+        let token = KeychainController.loadToken()!
+        print(token)
+        
+        let urlString = "http://localhost:3000/api/v1/fileurl.json"
+        
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.httpMethod = "POST"
+        
+        
+        
+        var postString = "fileurl="
+        postString += URLModel.sharedInstance.dashboardUrl
+        postString += filepath
+        
+        
+        request.httpBody = postString.data(using: .utf8)
+        print(postString)
+        
+        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            
+        }
+        task.resume()
+        
+    }
+
     
     
     
