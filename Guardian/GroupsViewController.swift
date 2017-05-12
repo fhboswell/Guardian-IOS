@@ -19,13 +19,17 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = UIColor(netHex:0x1D3557)
+        self.navigationController?.isNavigationBarHidden = false
+        
         GroupTableView.delegate = self
         GroupTableView.dataSource = self
         
         initalizeFetchedResultsController()
         
         //GroupData.sharedInstance.getGroupDataFromServer()
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         
 
@@ -33,6 +37,8 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
+        
+        
         GroupData.sharedInstance.getGroupDataFromServer()
     }
     @IBAction func AddGroupButton(_ sender: Any) {

@@ -23,7 +23,7 @@ class ViewController: UIViewController, AutoLogin  {
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        URLModel.sharedInstance.makeUrlsDevelopment()
+        //URLModel.sharedInstance.makeUrlsDevelopment()
         
         
         ActionCableController.sharedInstance.initializeActionCable()
@@ -127,13 +127,21 @@ class ViewController: UIViewController, AutoLogin  {
                     print(userJson["type_key"]!)
                     print(userJson["selfieurl"]!)
                     
+                    print(userJson["selfieurl"]!)
+                    print(userJson["uuid"]!)
+                    
                     //var selfieurl: NSString
                     
                     if let selfieurl = userJson["selfieurl"] as? NSString{
                     self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
                     } else{
                         let selfieurl = "None"
-                        self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl, uuid: userJson["uuid"] as! NSString)
+                        if let uuid = userJson["uuid"] as? NSString{
+                            self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
+                        } else{
+                            let uuid = "None"
+                            self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl, uuid: uuid as NSString)
+                        }
                     
                     }
                     
