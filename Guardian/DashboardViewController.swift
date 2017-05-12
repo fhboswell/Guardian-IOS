@@ -58,7 +58,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             
             var filepath = fetchedUsers.first!.selfieurl!
             
-            let index  = filepath.index(filepath.startIndex, offsetBy: URLModel.sharedInstance.dashboardUrl.characters.count - 3)
+            let index  = filepath.index(filepath.startIndex, offsetBy: URLModel.sharedInstance.s3url.characters.count )
             //this magic number helps make the selfieurl into an aws filepath
             
             //let index = filepath.index(filepath.startIndex, offsetBy: 7)

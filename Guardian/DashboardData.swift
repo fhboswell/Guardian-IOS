@@ -128,7 +128,7 @@ class DashboardData  {
             
             var uuid = fetchedUsers.first!.uuid!
             
-            var filepath = "uploads/" + uuid + "/fffile.jpg"
+            var filepath = "uploads/" + uuid + "/file.jpg"
             
             
             let uploadRequest = AWSS3TransferManagerUploadRequest()
@@ -190,7 +190,7 @@ class DashboardData  {
         let token = KeychainController.loadToken()!
         print(token)
         
-        let urlString = "http://localhost:3000/api/v1/fileurl.json"
+        let urlString = URLModel.sharedInstance.fileurl
         
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
@@ -198,7 +198,7 @@ class DashboardData  {
         
         
         var postString = "fileurl="
-        postString += URLModel.sharedInstance.dashboardUrl
+        postString += URLModel.sharedInstance.s3url
         postString += filepath
         
         

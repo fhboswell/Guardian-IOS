@@ -27,7 +27,7 @@ class URLModel  {
     var fileurl =  "http://localhost:3000/api/v1/fileurl.json"
     
     
-    var s3url = "http://guardian-v1-storage.s3-us-west-1.amazonaws.com/"
+    var s3url = "https://guardian-v1-storage.s3-us-west-1.amazonaws.com/"
     
     
     /*
