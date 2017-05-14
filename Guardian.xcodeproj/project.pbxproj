@@ -28,6 +28,7 @@
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
 		948468B11EC838F000CFAD9F /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B01EC838F000CFAD9F /* testViewController.swift */; };
 		948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */; };
+		948468B51EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B41EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift */; };
 		94863BD41EA5625700579D25 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863BD31EA5625700579D25 /* URLModel.swift */; };
 		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 		949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */; };
@@ -76,6 +77,7 @@
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		948468B01EC838F000CFAD9F /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
+		948468B41EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizardViewController.swift; sourceTree = "<group>"; };
 		94863BD31EA5625700579D25 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		94863BD51EA5AF1500579D25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsViewController.swift; sourceTree = "<group>"; };
@@ -114,12 +116,8 @@
 		941DEA8A1EC160E200001426 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
-				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
-				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
-				949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */,
-				94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */,
-				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
-				949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */,
+				948468B71EC8E60D00CFAD9F /* Individual */,
+				948468B61EC8E5F600CFAD9F /* Group */,
 			);
 			name = Admin;
 			sourceTree = "<group>";
@@ -131,6 +129,7 @@
 				94863BD31EA5625700579D25 /* URLModel.swift */,
 				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
 				94289A1C1EA2D9D300C73ED3 /* ActionCableController.swift */,
+				948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -174,7 +173,6 @@
 				941DEA8A1EC160E200001426 /* Admin */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
 				948468B01EC838F000CFAD9F /* testViewController.swift */,
-				948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94863BD51EA5AF1500579D25 /* Info.plist */,
@@ -182,6 +180,27 @@
 				94424FAE1E1C9530001C907E /* Guardian.xcdatamodeld */,
 			);
 			path = Guardian;
+			sourceTree = "<group>";
+		};
+		948468B61EC8E5F600CFAD9F /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
+				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
+				949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */,
+				948468B41EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
+		948468B71EC8E60D00CFAD9F /* Individual */ = {
+			isa = PBXGroup;
+			children = (
+				94289A1A1EA2D54B00C73ED3 /* IndividualData.swift */,
+				949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */,
+				949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */,
+			);
+			name = Individual;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +324,7 @@
 				949FCA3B1EB33BEA00DC01BC /* AddGroupViewController.swift in Sources */,
 				94289A191EA2CAFC00C73ED3 /* GroupData.swift in Sources */,
 				945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */,
+				948468B51EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,
 				947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */,
 				948468B11EC838F000CFAD9F /* testViewController.swift in Sources */,
