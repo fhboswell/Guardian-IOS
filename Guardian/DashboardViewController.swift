@@ -247,7 +247,8 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     }
     
     func configureGuardianCell(cell: DashboardGuardianTableViewCell, indexPath: IndexPath) {
-        
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.black.cgColor
         
     }
     

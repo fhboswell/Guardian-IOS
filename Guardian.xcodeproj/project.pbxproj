@@ -26,6 +26,8 @@
 		945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945127071EAEE80F001FA4BD /* GroupsViewController.swift */; };
 		946EE6071EBF10950027ECC6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946EE6061EBF10950027ECC6 /* Keys.plist */; };
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
+		948468B11EC838F000CFAD9F /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B01EC838F000CFAD9F /* testViewController.swift */; };
+		948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */; };
 		94863BD41EA5625700579D25 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863BD31EA5625700579D25 /* URLModel.swift */; };
 		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 		949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */; };
@@ -72,6 +74,8 @@
 		945127071EAEE80F001FA4BD /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		946EE6061EBF10950027ECC6 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		948468B01EC838F000CFAD9F /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
 		94863BD31EA5625700579D25 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		94863BD51EA5AF1500579D25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				941DEA8B1EC1610300001426 /* Support */,
 				941DEA8A1EC160E200001426 /* Admin */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
+				948468B01EC838F000CFAD9F /* testViewController.swift */,
+				948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94863BD51EA5AF1500579D25 /* Info.plist */,
@@ -301,6 +307,8 @@
 				945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,
 				947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */,
+				948468B11EC838F000CFAD9F /* testViewController.swift in Sources */,
+				948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */,
 				94424FB01E1C9530001C907E /* Guardian.xcdatamodeld in Sources */,
 				949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */,
 			);

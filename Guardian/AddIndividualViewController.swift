@@ -8,7 +8,9 @@
 
 import UIKit
 
-class AddIndividualViewController: UIViewController, CreateSuccess{
+class AddIndividualViewController: UIViewController, CreateSuccess, UIViewControllerTransitioningDelegate{
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,11 @@ class AddIndividualViewController: UIViewController, CreateSuccess{
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func testButton(_ sender: Any) {
+        print("here")
+        self.performSegue(withIdentifier: "test", sender: self)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,6 +43,26 @@ class AddIndividualViewController: UIViewController, CreateSuccess{
     func executeSeuge() {
         self.dismiss(animated: true, completion: nil)
         print("made it")
+    }
+    
+    let customPresentAnimationController = CustomPresentAnimationController()
+    
+   
+    
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("here222")
+        return customPresentAnimationController
+    }
+    
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "test" {
+            print("hedddddre")
+            let toViewController = segue.destination as! testViewController
+            toViewController.transitioningDelegate = self
+        }
     }
     /*
     // MARK: - Navigation
