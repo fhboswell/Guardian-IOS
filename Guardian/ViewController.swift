@@ -25,6 +25,13 @@ class ViewController: UIViewController, AutoLogin  {
          */
         //URLModel.sharedInstance.makeUrlsDevelopment()
         
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
         
         ActionCableController.sharedInstance.initializeActionCable()
         
@@ -35,7 +42,10 @@ class ViewController: UIViewController, AutoLogin  {
         
         
     }
-    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     func executeSeuge() {
         self.performSegue(withIdentifier: "Admin", sender: self)
         print("made it")
@@ -136,7 +146,7 @@ class ViewController: UIViewController, AutoLogin  {
                     self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
                     } else{
                         let selfieurl = "None"
-                        if let uuid = userJson["uuid"] as? NSString{
+                        if (userJson["uuid"] as? NSString) != nil{
                             self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
                         } else{
                             let uuid = "None"

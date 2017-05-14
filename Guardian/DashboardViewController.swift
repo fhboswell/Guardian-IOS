@@ -14,6 +14,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     
     
+    @IBOutlet weak var GuardianName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var DashboardTableView: UITableView!
     var imagePicker = UIImagePickerController()
@@ -26,9 +27,17 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = UIColor(netHex:0x1D3557)
+        nav?.titleTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 34, weight: UIFontWeightThin)]
+        self.title = "Your Groups"
+        
+        self.navigationController?.isNavigationBarHidden = false
        
         DashboardTableView.delegate = self
         DashboardTableView.dataSource = self
+        
         initalizeFetchedResultsController()
         
         
@@ -44,24 +53,21 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     func setImage(){
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        //let name = "Henry"
-        //fetchRequest.predicate = NSPredicate()
+        
         
         do {
             let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
             //fetchedUsers.first?.uuid
             
-            print(fetchedUsers.first?.selfieurl)
+            //print(fetchedUsers.first?.selfieurl)
             if fetchedUsers.first?.selfieurl == "None"{
                 return
             }
             
-            var filepath = fetchedUsers.first!.selfieurl!
+            let filepath = fetchedUsers.first!.selfieurl!
             
             let index  = filepath.index(filepath.startIndex, offsetBy: URLModel.sharedInstance.s3url.characters.count )
-            //this magic number helps make the selfieurl into an aws filepath
             
-            //let index = filepath.index(filepath.startIndex, offsetBy: 7)
             print(filepath.substring(from: index))
             let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myImage.jpg")
             
@@ -75,23 +81,23 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             
             transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
                 
-                if let error = task.error as? NSError {
+                if let error = task.error as NSError? {
                     if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
                         switch code {
                         case .cancelled, .paused:
                             break
                         default:
-                            print("Error downloading: \(downloadRequest?.key) Error: \(error)")
+                            print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
                         }
                     } else {
-                        print("Error downloading: \(downloadRequest?.key) Error: \(error)")
+                        print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
                     }
                     return nil
                 }
-                print("Download complete for: \(downloadRequest?.key)")
+                print("Download complete for: \(String(describing: downloadRequest?.key))")
                 self.ImageView.contentMode = .scaleAspectFit
                 self.ImageView.image = UIImage(contentsOfFile: downloadingFileURL.path)
-                let downloadOutput = task.result
+                //let downloadOutput = task.result
                 return nil
             })
 
@@ -102,7 +108,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             
             
             
-            print(fetchedUsers.first?.uuid)
+            //print(fetchedUsers.first?.uuid)
         } catch {
             fatalError("Failed to fetch employees: \(error)")
         }
@@ -221,39 +227,92 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
     }
     
-    func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
+    func configureCell(cell: DashboardTableViewCell, indexPath: IndexPath) {
         guard let selectedIndividual = fetchedResultsController.object(at: indexPath) as? Individual
             else{
                 fatalError("Failed to initialize ")
         }
-        cell.textLabel?.text = selectedIndividual.name
+        cell.NameLabel?.text = selectedIndividual.name
         if(selectedIndividual.check == "No"){
-            cell.backgroundColor = UIColor.red
+            cell.CheckView.backgroundColor = UIColor.red
             print("turn it red")
         }else {
-            cell.backgroundColor = UIColor.green
+            cell.CheckView.backgroundColor = UIColor.green
             print("turn it green")
         }
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.black.cgColor
+        //cell.contentView.alpha = 1
+        //cell.contentView.backgroundColor = UIColor.init(white: 0.9, alpha: 1)
     }
     
+    func configureGuardianCell(cell: DashboardGuardianTableViewCell, indexPath: IndexPath) {
+        
+        
+    }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections!.count
+        return 2
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
+        if section == 0{
+            guard let sections = fetchedResultsController.sections else {
+                fatalError("No sections in fetchedResultsController")
+            }
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
         }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+        if section == 1{
+            return 1
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Children"
+        }
+        if section == 1{
+            return "Guardians"
+        }
+        return ""
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.black
+        header.textLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier3", for: indexPath) as! DashboardTableViewCell
+            // Set up the cell
+            configureCell(cell: cell, indexPath: indexPath)
+            return cell
+        }
+        if indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier4", for: indexPath) as! DashboardGuardianTableViewCell
+            // Set up the cell
+            configureGuardianCell(cell: cell, indexPath: indexPath)
+            return cell
+            
+            
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier3", for: indexPath)
-        // Set up the cell
-        configureCell(cell: cell, indexPath: indexPath)
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -299,7 +358,7 @@ extension DashboardViewController:NSFetchedResultsControllerDelegate{
         case .delete:
             DashboardTableView.deleteRows(at: [indexPath! as IndexPath], with: .fade)
         case .update:
-            configureCell(cell: DashboardTableView.cellForRow(at: indexPath! as IndexPath)!, indexPath: indexPath! as IndexPath)
+            configureCell(cell: DashboardTableView.cellForRow(at: indexPath! as IndexPath)! as! DashboardTableViewCell, indexPath: indexPath! as IndexPath)
         case .move:
             //configureCell(cell: tableView.cellForRow(at: indexPath! as IndexPath)!, indexPath: indexPath! as IndexPath)
             //tableView.moveRow(at: indexPath!, to: newIndexPath! as IndexPath)

@@ -81,6 +81,13 @@ class DashboardData  {
                         //print(individual.check ?? "default value")
                         
                         
+                        
+                        
+                        //add group data here
+                        //the individual needs a group id
+                        
+                        
+                        
                     }
                 }catch{
                     DispatchQueue.main.async {
@@ -121,14 +128,14 @@ class DashboardData  {
             let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
             //fetchedUsers.first?.uuid
             
-            print(fetchedUsers.first?.selfieurl)
+            //print(fetchedUsers.first?.selfieurl)
             if fetchedUsers.first?.uuid == "None"{
                 return
             }
             
-            var uuid = fetchedUsers.first!.uuid!
+            let uuid = fetchedUsers.first!.uuid!
             
-            var filepath = "uploads/" + uuid + "/file.jpg"
+            let filepath = "uploads/" + uuid + "/file.jpg"
             
             
             let uploadRequest = AWSS3TransferManagerUploadRequest()
@@ -139,22 +146,22 @@ class DashboardData  {
             
             transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
                 
-                if let error = task.error as? NSError {
+                if let error = task.error as NSError? {
                     if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
                         switch code {
                         case .cancelled, .paused:
                             break
                         default:
-                            print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                            print("Error uploading: \(String(describing: uploadRequest?.key)) Error: \(error)")
                         }
                     } else {
-                        print("Error uploading: \(uploadRequest?.key) Error: \(error)")
+                        print("Error uploading: \(String(describing: uploadRequest?.key)) Error: \(error)")
                     }
                     return nil
                 }
                 
-                let uploadOutput = task.result
-                print("Upload complete for: \(uploadRequest?.key)")
+                //let uploadOutput = task.result
+                print("Upload complete for: \(String(describing: uploadRequest?.key))")
                 //return nil
                 
                 
@@ -176,7 +183,7 @@ class DashboardData  {
                 
             })
             
-            print(fetchedUsers.first?.uuid)
+            //print(fetchedUsers.first?.uuid)
         } catch {
             fatalError("Failed to fetch employees: \(error)")
         }

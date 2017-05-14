@@ -19,8 +19,12 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor(netHex:0x1D3557)
+        nav?.titleTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 34, weight: UIFontWeightThin)]
+        self.title = "Your Groups"
+        
         self.navigationController?.isNavigationBarHidden = false
         
         GroupTableView.delegate = self
@@ -41,6 +45,9 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
         GroupData.sharedInstance.getGroupDataFromServer()
     }
+    
+    
+    
     @IBAction func AddGroupButton(_ sender: Any) {
         print("signup")
         

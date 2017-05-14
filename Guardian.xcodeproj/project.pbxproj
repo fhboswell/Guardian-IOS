@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9405A4E31EC6AAB4008EB907 /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405A4E21EC6AAB4008EB907 /* DashboardTableViewCell.swift */; };
 		941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941415161EAC57ED0001C832 /* SignUpViewController.swift */; };
 		941DEA8D1EC1795700001426 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941DEA8C1EC1795700001426 /* DashboardViewController.swift */; };
 		941DEA8F1EC17A7400001426 /* DashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941DEA8E1EC17A7400001426 /* DashboardData.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9405A4E21EC6AAB4008EB907 /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		941415161EAC57ED0001C832 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		941DEA8C1EC1795700001426 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		941DEA8E1EC17A7400001426 /* DashboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardData.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				941DEA8C1EC1795700001426 /* DashboardViewController.swift */,
+				9405A4E21EC6AAB4008EB907 /* DashboardTableViewCell.swift */,
 				941DEA8E1EC17A7400001426 /* DashboardData.swift */,
 			);
 			name = Guardian;
@@ -286,6 +289,7 @@
 			files = (
 				941DEA8F1EC17A7400001426 /* DashboardData.swift in Sources */,
 				941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */,
+				9405A4E31EC6AAB4008EB907 /* DashboardTableViewCell.swift in Sources */,
 				94424FAA1E1C9530001C907E /* ViewController.swift in Sources */,
 				94289A1B1EA2D54B00C73ED3 /* IndividualData.swift in Sources */,
 				94863BD41EA5625700579D25 /* URLModel.swift in Sources */,

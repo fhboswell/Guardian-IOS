@@ -12,9 +12,22 @@ class AddGroupViewController: UIViewController, CreateGroupSuccess {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddGroupViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
         GroupData.sharedInstance.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +39,9 @@ class AddGroupViewController: UIViewController, CreateGroupSuccess {
 
     @IBOutlet weak var DescriptionField: UITextField!
     
+    @IBAction func CancelButton(_ sender: Any) {
+        executeSeuge()
+    }
     @IBAction func AddButton(_ sender: Any) {
         
         GroupData.sharedInstance.createGroup(description: DescriptionField.text!, name: NameField.text!)
