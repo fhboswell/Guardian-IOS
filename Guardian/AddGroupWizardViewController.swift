@@ -8,13 +8,31 @@
 
 import UIKit
 
-class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitioningDelegate {
-    let customPresentAnimationController = CustomPresentAnimationController()
+class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+    
+    let customNavigationAnimationController = CustomNavigationAnimationController()
+    let customInteractionController = CustomInteractionController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.delegate = self as! UINavigationControllerDelegate
 
         // Do any additional setup after loading the view.
     }
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push {
+            customInteractionController.attachToViewController(toVC)
+        }
+        customNavigationAnimationController.reverse = operation == .pop
+        return customNavigationAnimationController
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return customInteractionController.transitionInProgress ? customInteractionController : nil
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -25,11 +43,7 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
         performSegue(withIdentifier: "goToWizard2", sender: self)
     }
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        print("here222")
-        return customPresentAnimationController
-    }
-    
+   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -58,6 +72,7 @@ class AddGroupWizard2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         
         // Do any additional setup after loading the view.
     }
