@@ -9,8 +9,6 @@
 import UIKit
 class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
-    let customNavigationAnimationController = CustomNavigationAnimationController()
-    let customInteractionController = CustomInteractionController()
     
     
     @IBOutlet weak var GroupLocation: UITextField!
