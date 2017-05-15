@@ -35,6 +35,7 @@
 		948468C11EC9460000CFAD9F /* AddGroupWizard3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468C01EC9460000CFAD9F /* AddGroupWizard3ViewController.swift */; };
 		948468C31EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468C21EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift */; };
 		94863BD41EA5625700579D25 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863BD31EA5625700579D25 /* URLModel.swift */; };
+		948937831ECA66C9009A315B /* AddGroupWizard5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948937821ECA66C9009A315B /* AddGroupWizard5ViewController.swift */; };
 		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 		949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */; };
 		949FCA3B1EB33BEA00DC01BC /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */; };
@@ -90,6 +91,7 @@
 		948468C21EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard4ViewController.swift; sourceTree = "<group>"; };
 		94863BD31EA5625700579D25 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		94863BD51EA5AF1500579D25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		948937821ECA66C9009A315B /* AddGroupWizard5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard5ViewController.swift; sourceTree = "<group>"; };
 		949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsViewController.swift; sourceTree = "<group>"; };
 		949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIndividualViewController.swift; sourceTree = "<group>"; };
 		949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				948468BD1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift */,
 				948468C01EC9460000CFAD9F /* AddGroupWizard3ViewController.swift */,
 				948468C21EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift */,
+				948937821ECA66C9009A315B /* AddGroupWizard5ViewController.swift */,
 			);
 			name = Wizard;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				948468C31EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,
 				947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */,
+				948937831ECA66C9009A315B /* AddGroupWizard5ViewController.swift in Sources */,
 				948468B11EC838F000CFAD9F /* testViewController.swift in Sources */,
 				948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */,
 				94424FB01E1C9530001C907E /* Guardian.xcdatamodeld in Sources */,

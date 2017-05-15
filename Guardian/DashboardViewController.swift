@@ -227,7 +227,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
     }
     
-    func configureCell(cell: DashboardTableViewCell, indexPath: IndexPath) {
+    func configureCell(cell: DashboardTableViewCell, indexPath: IndexPath) -> DashboardTableViewCell{
         guard let selectedIndividual = fetchedResultsController.object(at: indexPath) as? Individual
             else{
                 fatalError("Failed to initialize ")
@@ -240,15 +240,18 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             cell.CheckView.backgroundColor = UIColor.green
             print("turn it green")
         }
-        cell.layer.borderWidth = 3.0
-        cell.layer.borderColor = UIColor.black.cgColor
-        //cell.contentView.alpha = 1
-        //cell.contentView.backgroundColor = UIColor.init(white: 0.9, alpha: 1)
+       // cell.layer.borderWidth = 3.0
+        //cell.layer.borderColor = UIColor.black.cgColor
+        //cell.contentView.alpha = 0.5
+        cell.contentView.backgroundColor = UIColor.init(white: 1, alpha: 0.6)
+        return cell
     }
     
-    func configureGuardianCell(cell: DashboardGuardianTableViewCell, indexPath: IndexPath) {
-        cell.layer.borderWidth = 3.0
-        cell.layer.borderColor = UIColor.black.cgColor
+    func configureGuardianCell(cell: DashboardGuardianTableViewCell, indexPath: IndexPath) -> DashboardGuardianTableViewCell{
+        //cell.layer.borderWidth = 3.0
+       // cell.layer.borderColor = UIColor.black.cgColor
+        
+        return cell
         
     }
     
@@ -281,32 +284,61 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         }
         return ""
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
+        returnedView.backgroundColor = UIColor(netHex:0x1D3557)
+        var label: UILabel?
+        
+        if section == 0{
+            label = UILabel(frame: CGRect(x: 10, y: 27, width: view.frame.size.width, height: 25))
+            label?.text = "Children"
+            label?.textColor = .white
+        }
+        if section == 1{
+            label = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
+            label?.text = "Guardians"
+            label?.textColor = .white
+        }
+       
+        returnedView.addSubview(label!)
+        
+        return returnedView
     }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
+    
+    
+    /*
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
+        view.background UIColor.black
         header.textLabel?.textColor = UIColor.black
         header.textLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
         
     }
+ */
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier3", for: indexPath) as! DashboardTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier3", for: indexPath) as! DashboardTableViewCell
             // Set up the cell
-            configureCell(cell: cell, indexPath: indexPath)
+            cell = configureCell(cell: cell, indexPath: indexPath)
             return cell
         }
         if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier4", for: indexPath) as! DashboardGuardianTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier4", for: indexPath) as! DashboardGuardianTableViewCell
             // Set up the cell
-            configureGuardianCell(cell: cell, indexPath: indexPath)
+            cell = configureGuardianCell(cell: cell, indexPath: indexPath)
             return cell
             
             
