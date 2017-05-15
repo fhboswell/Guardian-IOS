@@ -9,11 +9,7 @@
 import UIKit
 
 class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
-    
-    let customNavigationAnimationController = CustomNavigationAnimationController()
-    let customInteractionController = CustomInteractionController()
-    
-    
+       
     @IBOutlet weak var InstructorName: UITextField!
     var wizardInput = [String: String]()
     
@@ -22,23 +18,23 @@ class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitio
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        navigationController?.delegate = self as! UINavigationControllerDelegate
+        
         
         // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
     }
-    
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .push {
-            customInteractionController.attachToViewController(toVC)
-        }
-        customNavigationAnimationController.reverse = operation == .pop
-        return customNavigationAnimationController
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
+
     
-    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return customInteractionController.transitionInProgress ? customInteractionController : nil
-    }
-    
+        
     @IBAction func BackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -61,7 +57,7 @@ class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitio
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToWizard3" {
-            print("goToWizard2")
+           
             let toViewController = segue.destination as! AddGroupWizard3ViewController
             toViewController.transitioningDelegate = self
            // toViewController.wizardInput = wizardInput

@@ -7,29 +7,47 @@
 //
 
 import UIKit
-
-class AddGroupWizard4ViewController: UIViewController {
-
+class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+    
+    let customNavigationAnimationController = CustomNavigationAnimationController()
+    let customInteractionController = CustomInteractionController()
+    
+    
+    @IBOutlet weak var GroupLocation: UITextField!
+    var wizardInput = [String: String]()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.isNavigationBarHidden = true
+        
+        
         // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+    @IBAction func BackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func NextButton1(_ sender: Any) {
+       
+            alert(message: "nope")
+        
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }
