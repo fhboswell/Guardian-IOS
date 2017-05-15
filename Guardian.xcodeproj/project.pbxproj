@@ -28,9 +28,12 @@
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
 		948468B11EC838F000CFAD9F /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B01EC838F000CFAD9F /* testViewController.swift */; };
 		948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */; };
-		948468B51EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B41EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift */; };
+		948468B51EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B41EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift */; };
 		948468B91EC8FB1500CFAD9F /* CustomNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B81EC8FB1500CFAD9F /* CustomNavigationAnimationController.swift */; };
 		948468BC1EC8FF7D00CFAD9F /* CustomInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468BB1EC8FF7D00CFAD9F /* CustomInteractionController.swift */; };
+		948468BE1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468BD1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift */; };
+		948468C11EC9460000CFAD9F /* AddGroupWizard3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468C01EC9460000CFAD9F /* AddGroupWizard3ViewController.swift */; };
+		948468C31EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468C21EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift */; };
 		94863BD41EA5625700579D25 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94863BD31EA5625700579D25 /* URLModel.swift */; };
 		949FCA371EB3113D00DC01BC /* IndividualsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */; };
 		949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949FCA381EB31C6100DC01BC /* AddIndividualViewController.swift */; };
@@ -79,9 +82,12 @@
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		948468B01EC838F000CFAD9F /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
-		948468B41EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizardViewController.swift; sourceTree = "<group>"; };
+		948468B41EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard1ViewController.swift; sourceTree = "<group>"; };
 		948468B81EC8FB1500CFAD9F /* CustomNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationAnimationController.swift; sourceTree = "<group>"; };
 		948468BB1EC8FF7D00CFAD9F /* CustomInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInteractionController.swift; sourceTree = "<group>"; };
+		948468BD1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard2ViewController.swift; sourceTree = "<group>"; };
+		948468C01EC9460000CFAD9F /* AddGroupWizard3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard3ViewController.swift; sourceTree = "<group>"; };
+		948468C21EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard4ViewController.swift; sourceTree = "<group>"; };
 		94863BD31EA5625700579D25 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		94863BD51EA5AF1500579D25 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		949FCA361EB3113D00DC01BC /* IndividualsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +198,7 @@
 				94289A181EA2CAFC00C73ED3 /* GroupData.swift */,
 				945127071EAEE80F001FA4BD /* GroupsViewController.swift */,
 				949FCA3A1EB33BEA00DC01BC /* AddGroupViewController.swift */,
-				948468B41EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift */,
+				948468BF1EC9447100CFAD9F /* Wizard */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -215,6 +221,17 @@
 				948468BB1EC8FF7D00CFAD9F /* CustomInteractionController.swift */,
 			);
 			name = Transition;
+			sourceTree = "<group>";
+		};
+		948468BF1EC9447100CFAD9F /* Wizard */ = {
+			isa = PBXGroup;
+			children = (
+				948468B41EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift */,
+				948468BD1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift */,
+				948468C01EC9460000CFAD9F /* AddGroupWizard3ViewController.swift */,
+				948468C21EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift */,
+			);
+			name = Wizard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,8 +355,11 @@
 				941DEA8D1EC1795700001426 /* DashboardViewController.swift in Sources */,
 				949FCA3B1EB33BEA00DC01BC /* AddGroupViewController.swift in Sources */,
 				94289A191EA2CAFC00C73ED3 /* GroupData.swift in Sources */,
+				948468C11EC9460000CFAD9F /* AddGroupWizard3ViewController.swift in Sources */,
+				948468BE1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift in Sources */,
 				945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */,
-				948468B51EC8E5EE00CFAD9F /* AddGroupWizardViewController.swift in Sources */,
+				948468B51EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift in Sources */,
+				948468C31EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,
 				947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */,
 				948468B11EC838F000CFAD9F /* testViewController.swift in Sources */,

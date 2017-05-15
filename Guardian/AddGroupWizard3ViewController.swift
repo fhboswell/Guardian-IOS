@@ -1,5 +1,5 @@
 //
-//  AddGroupWizardViewController.swift
+//  AddGroupWizard3ViewController.swift
 //  Guardian
 //
 //  Created by Henry Boswell on 5/14/17.
@@ -7,17 +7,22 @@
 //
 
 import UIKit
-
-class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+class AddGroupWizard3ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
     let customNavigationAnimationController = CustomNavigationAnimationController()
     let customInteractionController = CustomInteractionController()
+    
+    
+    @IBOutlet weak var GroupLocation: UITextField!
+    var wizardInput = [String: String]()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         navigationController?.delegate = self as! UINavigationControllerDelegate
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -32,18 +37,26 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return customInteractionController.transitionInProgress ? customInteractionController : nil
     }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    @IBAction func BackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func NextButton1(_ sender: Any) {
-        performSegue(withIdentifier: "goToWizard2", sender: self)
+        var groupLocation = GroupLocation.text
+        if (groupLocation?.characters.count)! > 6{
+            print(groupLocation?.characters.count)
+            wizardInput["GroupLocation"] = groupLocation
+            
+            performSegue(withIdentifier: "goToWizard3", sender: self)
+        }else{
+            print("error")
+            alert(message: "Name is too short")
+        }
+        
+        
     }
     
-   
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -51,46 +64,8 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
             print("goToWizard2")
             let toViewController = segue.destination as! AddGroupWizard2ViewController
             toViewController.transitioningDelegate = self
+            toViewController.wizardInput = wizardInput
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-
-class AddGroupWizard2ViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

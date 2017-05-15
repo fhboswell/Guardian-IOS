@@ -13,7 +13,7 @@ class CustomNavigationAnimationController: NSObject, UIViewControllerAnimatedTra
     var reverse: Bool = false
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1.5
+        return 0.5
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -28,10 +28,13 @@ class CustomNavigationAnimationController: NSObject, UIViewControllerAnimatedTra
         toView?.layer.anchorPoint = CGPoint(x: direction == 1 ? 0 : 1,y: 0.5)
         fromView?.layer.anchorPoint = CGPoint(x: direction == 1 ? 1 : 0,y: 0.5)
         
+       
+        
         var viewFromTransform: CATransform3D = CATransform3DMakeRotation(direction * CGFloat(M_PI_2), 0.0, 1.0, 0.0)
         var viewToTransform: CATransform3D = CATransform3DMakeRotation(-direction * CGFloat(M_PI_2), 0.0, 1.0, 0.0)
         viewFromTransform.m34 = const
         viewToTransform.m34 = const
+        
         
         containerView.transform = CGAffineTransform(translationX: direction * containerView.frame.size.width / 2.0, y: 0)
         toView?.layer.transform = viewToTransform
