@@ -11,7 +11,7 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
     
     
     
-    @IBOutlet weak var GroupLocation: UITextField!
+    @IBOutlet weak var GroupTime: UITextField!
     var wizardInput = [String: String]()
     
     
@@ -38,11 +38,11 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
     @IBAction func BackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func NextButton1(_ sender: Any) {
-        var groupLocation = GroupLocation.text
-        if (groupLocation?.characters.count)! > 6{
-            print(groupLocation?.characters.count)
-            wizardInput["GroupLocation"] = groupLocation
+    @IBAction func NextButton(_ sender: Any) {
+        var groupTime = GroupTime.text
+        if (groupTime?.characters.count)! > 6{
+           //print(groupTime?.characters.count!)
+            wizardInput["GroupTime"] = groupTime
             
             performSegue(withIdentifier: "goToWizard5", sender: self)
         }else{
@@ -61,7 +61,7 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
             print("goToWizard4")
             let toViewController = segue.destination as! AddGroupWizard5ViewController
             toViewController.transitioningDelegate = self
-            toViewController.wizardInput = wizardInput
+           // toViewController.wizardInput = wizardInput
         }
     }
     

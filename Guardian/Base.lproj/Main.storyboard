@@ -67,8 +67,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guardian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-zo-axr">
-                                <rect key="frame" x="105" y="104" width="164" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guardian " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-zo-axr">
+                                <rect key="frame" x="88" y="59" width="198" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="198" id="XrS-Rb-BoQ"/>
+                                    <constraint firstAttribute="height" constant="72" id="bHO-j7-fCZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="39"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -84,7 +88,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="cwb-ir-wvb" secondAttribute="leading" id="SUf-bv-gIh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Pde-YA-aOc" secondAttribute="leading" id="T9q-fD-cge"/>
                             <constraint firstAttribute="leadingMargin" secondItem="YMJ-xK-0ws" secondAttribute="leading" id="Uaz-2S-plN"/>
-                            <constraint firstItem="Ch2-zo-axr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="84" id="UbV-Jr-JH9"/>
+                            <constraint firstItem="Ch2-zo-axr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39" id="UbV-Jr-JH9"/>
                             <constraint firstItem="Nia-7w-B0s" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="171" id="V1W-F2-q8R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YMJ-xK-0ws" secondAttribute="trailing" id="azd-d5-oAf"/>
                             <constraint firstItem="Pde-YA-aOc" firstAttribute="top" secondItem="Nia-7w-B0s" secondAttribute="bottom" constant="8" id="ftg-zw-JgS"/>
@@ -98,6 +102,7 @@
                     <connections>
                         <outlet property="EmailField" destination="Pde-YA-aOc" id="rdP-Nf-zsZ"/>
                         <outlet property="PasswordField" destination="YMJ-xK-0ws" id="LOC-cr-WTz"/>
+                        <outlet property="TitleLabel" destination="Ch2-zo-axr" id="Xvo-du-4l2"/>
                         <segue destination="BKJ-v3-VFZ" kind="presentation" identifier="SignUpIdent" id="cqE-ih-4uI"/>
                         <segue destination="joe-hD-D8K" kind="show" identifier="Admin" id="b2B-cI-AG7"/>
                         <segue destination="Pfk-ct-dD5" kind="show" identifier="Guardian" id="Oje-dC-eML"/>
@@ -105,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="136"/>
+            <point key="canvasLocation" x="816.79999999999995" y="135.38230884557723"/>
         </scene>
         <!--Groups View Controller-->
         <scene sceneID="UYy-yy-usN">
@@ -800,7 +805,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="NextButton1:" destination="yJb-3M-Af7" eventType="touchUpInside" id="hBs-fk-mVV"/>
+                                    <action selector="NextButton:" destination="yJb-3M-Af7" eventType="touchUpInside" id="ozh-y9-cK1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLi-eV-OXy">
@@ -888,7 +893,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cellidentifier3" rowHeight="152" id="F3P-Zx-C4W" customClass="DashboardTableViewCell" customModule="Guardian" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="343" height="152"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="343" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F3P-Zx-C4W" id="Ekf-0A-HW9">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="152"/>
@@ -948,7 +953,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cellidentifier4" id="W77-FE-O9I" customClass="DashboardGuardianTableViewCell" customModule="Guardian" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="208" width="343" height="152"/>
+                                        <rect key="frame" x="0.0" y="207.5" width="343" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W77-FE-O9I" id="TZm-yx-ylX">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="152"/>
@@ -1110,7 +1115,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="NextButton1:" destination="LcY-Sg-PNy" eventType="touchUpInside" id="Ilw-f2-RDF"/>
+                                    <action selector="NextButton:" destination="LcY-Sg-PNy" eventType="touchUpInside" id="3s7-Nb-hUJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncG-2M-Z9p">
@@ -1202,7 +1207,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="NextButton1:" destination="V9I-NJ-cnS" eventType="touchUpInside" id="yT5-59-ipM"/>
+                                    <action selector="NextButton:" destination="V9I-NJ-cnS" eventType="touchUpInside" id="Fri-wa-aoV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-6f-uZy">
@@ -1294,7 +1299,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="NextButton1:" destination="OYk-1w-3wV" eventType="touchUpInside" id="SMV-oz-wKJ"/>
+                                    <action selector="NextButton:" destination="OYk-1w-3wV" eventType="touchUpInside" id="ew4-nQ-suJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt7-PA-bCe">
@@ -1357,7 +1362,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YYr-NM-f9i"/>
                     <connections>
-                        <outlet property="GroupLocation" destination="DFt-EV-G4r" id="iWh-ip-Jjj"/>
+                        <outlet property="GroupTime" destination="DFt-EV-G4r" id="ZuE-2P-ZWO"/>
                         <segue destination="U9f-e6-u7u" kind="show" identifier="goToWizard5" id="DgA-Yu-fMz"/>
                     </connections>
                 </viewController>
@@ -1368,7 +1373,7 @@
         <!--Add Group Wizard5 View Controller-->
         <scene sceneID="VMA-rD-8Rt">
             <objects>
-                <viewController id="U9f-e6-u7u" customClass="AddGroupWizard5ViewController" sceneMemberID="viewController">
+                <viewController id="U9f-e6-u7u" customClass="AddGroupWizard5ViewController" customModule="Guardian" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kmK-ou-Shp"/>
                         <viewControllerLayoutGuide type="bottom" id="bqq-o2-8oy"/>
@@ -1385,6 +1390,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="DoneButton:" destination="U9f-e6-u7u" eventType="touchUpInside" id="qyx-F7-tZX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5s-pQ-CCP">
                                 <rect key="frame" x="71" y="83" width="232" height="46"/>
@@ -1400,6 +1408,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="BackButton:" destination="U9f-e6-u7u" eventType="touchUpInside" id="0qh-uQ-XXp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIF-lJ-Cmu">
                                 <rect key="frame" x="16" y="237" width="226" height="34"/>
@@ -1440,6 +1451,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wq5-9Z-Eqr"/>
+                    <connections>
+                        <outlet property="ReviewView" destination="meq-Sj-kq9" id="XHz-LG-5ZH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsz-Fw-rTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -36,7 +36,7 @@ class CustomInteractionController: UIPercentDrivenInteractiveTransition, UIViewC
             transitionInProgress = true
             navigationController.popViewController(animated: true)
         case .changed:
-            var const = CGFloat(fminf(fmaxf(Float(viewTranslation.x / 200.0), 0.0), 1.0))
+            let const = CGFloat(fminf(fmaxf(Float(viewTranslation.x / 200.0), 0.0), 1.0))
             shouldCompleteTransition = const > 0.5
             print(const)
             update(const)

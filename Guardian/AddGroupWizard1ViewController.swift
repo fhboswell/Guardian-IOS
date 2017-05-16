@@ -22,7 +22,7 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        navigationController?.delegate = self as! UINavigationControllerDelegate
+        navigationController?.delegate = self as UINavigationControllerDelegate
 
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -53,10 +53,10 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
     @IBAction func CancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func NextButton1(_ sender: Any) {
+    @IBAction func NextButton(_ sender: Any) {
         var groupName = GroupName.text
         if (groupName?.characters.count)! > 3{
-            print(groupName?.characters.count)
+            //print(groupName?.characters.count)
             wizardInput["GroupName"] = groupName
             performSegue(withIdentifier: "goToWizard2", sender: self)
         }else{

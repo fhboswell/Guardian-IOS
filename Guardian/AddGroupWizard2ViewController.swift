@@ -38,7 +38,7 @@ class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitio
     @IBAction func BackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func NextButton1(_ sender: Any) {
+    @IBAction func NextButton(_ sender: Any) {
         var instructorName = InstructorName.text
         if (instructorName?.characters.count)! > 3{
             print(instructorName?.characters.count)

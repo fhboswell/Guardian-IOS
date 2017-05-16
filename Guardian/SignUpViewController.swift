@@ -194,7 +194,9 @@ class SignUpViewController: UIViewController  {
             let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
             user.token = token as String
         
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: { self.delegate?.executeSeuge()})
+            self.delegate?.executeSeuge()
+            
             
             
         }

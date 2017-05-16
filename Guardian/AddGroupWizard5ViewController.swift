@@ -7,11 +7,12 @@
 //
 
 import UIKit
-class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+class AddGroupWizard5ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
     
     
-    @IBOutlet weak var GroupLocation: UITextField!
+    @IBOutlet weak var ReviewView: UITextView!
+   
     var wizardInput = [String: String]()
     
     
@@ -19,6 +20,16 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        
+        var fullDict = ""
+        
+        for (x, y) in wizardInput {
+            fullDict += "(\(x): \(y))\n"
+        }
+        
+        //display.text = fullDict
+        print(fullDict)
+        ReviewView.text = fullDict
         
         
         // Do any additional setup after loading the view.
@@ -38,14 +49,15 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
     @IBAction func BackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func NextButton1(_ sender: Any) {
-        
-        alert(message: "nope")
-        
-        
-        
+    
+    @IBAction func DoneButton(_ sender: Any) {
+        self.navigationController?.dismiss(animated: true, completion: {
+           //
+            //self.navController = nil;
+        });
     }
     
     
     
 }
+

@@ -18,29 +18,18 @@ class ViewController: UIViewController, AutoLogin  {
     
    
    
+    @IBOutlet weak var TitleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          */
-        //URLModel.sharedInstance.makeUrlsDevelopment()
-        
-        //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
         view.addGestureRecognizer(tap)
-        
         ActionCableController.sharedInstance.initializeActionCable()
         
-       
-
-        //UINavigationBar.a
-            //hexStringToUIColor(hex: "0x1D3557")
-        
-        
+        TitleLabel.layer.borderColor = UIColor.black.cgColor
+        TitleLabel.layer.borderWidth = 4
     }
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -75,17 +64,8 @@ class ViewController: UIViewController, AutoLogin  {
     @IBOutlet weak var PasswordField: UITextField!
     
     @IBAction func SignUpButton(_ sender: Any) {
-        
-        
-        //SignUpIdent
-        print("signup")
-        
-    
-        
-        
         self.performSegue(withIdentifier: "SignUpIdent", sender: self)
-        
-        
+
     }
     
    
@@ -96,18 +76,14 @@ class ViewController: UIViewController, AutoLogin  {
             secondController.delegate = self
         }
     }
+    
+    
     @IBAction func LoginButton(_ sender: Any) {
-        
-        
-        
-        
-        let urlString = URLModel.sharedInstance.authUrl
+   let urlString = URLModel.sharedInstance.authUrl
         
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "POST"
-        
-        
-        
+
         var postString = "email="
         postString += EmailField.text!
         postString += "&password="
