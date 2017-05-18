@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddGroupViewController: UIViewController, CreateGroupSuccess {
+class AddGroupViewController: UIViewController { // CreateGroupSucess
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class AddGroupViewController: UIViewController, CreateGroupSuccess {
         //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
-        GroupData.sharedInstance.delegate = self
+        //GroupData.sharedInstance.delegate = self
 
         // Do any additional setup after loading the view.
     }

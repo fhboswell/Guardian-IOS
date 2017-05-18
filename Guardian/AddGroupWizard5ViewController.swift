@@ -7,23 +7,24 @@
 //
 
 import UIKit
-class AddGroupWizard5ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+class AddGroupWizard5ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, CreateGroupSuccess {
     
     
     
     @IBOutlet weak var ReviewView: UITextView!
    
-    var wizardInput = [String: String]()
+     var wizardInput : [String: String]?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GroupData.sharedInstance.delegate = self
         self.navigationController?.isNavigationBarHidden = true
         
         var fullDict = ""
         
-        for (x, y) in wizardInput {
+        for (x, y) in wizardInput! {
             fullDict += "(\(x): \(y))\n"
         }
         
@@ -51,11 +52,20 @@ class AddGroupWizard5ViewController: UIViewController, UIViewControllerTransitio
     }
     
     @IBAction func DoneButton(_ sender: Any) {
-        self.navigationController?.dismiss(animated: true, completion: {
+        GroupData.sharedInstance.createGroupFromWizard(wizardInput: wizardInput!)
+        //self.navigationController?.dismiss(animated: true, completion: {
            //
             //self.navController = nil;
-        });
+       // });
     }
+    func executeSeuge() {
+        self.navigationController?.dismiss(animated: true, completion: {
+            
+           // self.navController = nil;
+            });
+        print("made it")
+    }
+
     
     
     

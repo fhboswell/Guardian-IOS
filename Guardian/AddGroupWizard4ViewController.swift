@@ -12,7 +12,7 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
     
     
     @IBOutlet weak var GroupTime: UITextField!
-    var wizardInput = [String: String]()
+     var wizardInput : [String: String]?
     
     
     
@@ -42,7 +42,7 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
         var groupTime = GroupTime.text
         if (groupTime?.characters.count)! > 6{
            //print(groupTime?.characters.count!)
-            wizardInput["GroupTime"] = groupTime
+            wizardInput?["GroupTime"] = groupTime
             
             performSegue(withIdentifier: "goToWizard5", sender: self)
         }else{
@@ -61,7 +61,7 @@ class AddGroupWizard4ViewController: UIViewController, UIViewControllerTransitio
             print("goToWizard4")
             let toViewController = segue.destination as! AddGroupWizard5ViewController
             toViewController.transitioningDelegate = self
-           // toViewController.wizardInput = wizardInput
+           toViewController.wizardInput = wizardInput
         }
     }
     

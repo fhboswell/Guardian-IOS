@@ -11,13 +11,15 @@ import UIKit
 class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
        
     @IBOutlet weak var InstructorName: UITextField!
-    var wizardInput = [String: String]()
+    
+    var wizardInput : [String: String]?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        print(wizardInput?["GroupName"])
         
         
         // Do any additional setup after loading the view.
@@ -42,7 +44,7 @@ class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitio
         var instructorName = InstructorName.text
         if (instructorName?.characters.count)! > 3{
             print(instructorName?.characters.count)
-            wizardInput["InstructorName"] = instructorName
+            wizardInput?["InstructorName"] = instructorName
             performSegue(withIdentifier: "goToWizard3", sender: self)
         }else{
             print("error")
@@ -60,7 +62,7 @@ class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitio
            
             let toViewController = segue.destination as! AddGroupWizard3ViewController
             toViewController.transitioningDelegate = self
-           // toViewController.wizardInput = wizardInput
+            toViewController.wizardInput = wizardInput
         }
     }
     

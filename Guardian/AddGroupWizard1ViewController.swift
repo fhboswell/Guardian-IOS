@@ -31,6 +31,18 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
        // tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
+        
+        
+        NextOut.backgroundColor = .clear
+        NextOut.layer.cornerRadius = 5
+        NextOut.layer.borderWidth = 5
+        NextOut.layer.borderColor = UIColor.black.cgColor
+        
+        CancelOut.backgroundColor = .clear
+        CancelOut.layer.cornerRadius = 5
+        CancelOut.layer.borderWidth = 5
+        CancelOut.layer.borderColor = UIColor.black.cgColor
+        
     }
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -58,6 +70,7 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
         if (groupName?.characters.count)! > 3{
             //print(groupName?.characters.count)
             wizardInput["GroupName"] = groupName
+            //print(
             performSegue(withIdentifier: "goToWizard2", sender: self)
         }else{
             print("error")
@@ -67,7 +80,10 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
         
     }
     
+    @IBOutlet weak var NextOut: UIButton!
    
+    @IBOutlet weak var CancelOut: UIButton!
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -75,7 +91,7 @@ class AddGroupWizard1ViewController: UIViewController, UIViewControllerTransitio
             print("goToWizard2")
             let toViewController = segue.destination as! AddGroupWizard2ViewController
             toViewController.transitioningDelegate = self
-           // toViewController.wizardInput = wizardInput
+           toViewController.wizardInput = wizardInput
         }
     }
 

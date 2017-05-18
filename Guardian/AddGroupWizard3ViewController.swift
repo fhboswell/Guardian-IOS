@@ -11,7 +11,7 @@ class AddGroupWizard3ViewController: UIViewController, UIViewControllerTransitio
     
       
     @IBOutlet weak var GroupLocation: UITextField!
-    var wizardInput = [String: String]()
+     var wizardInput : [String: String]?
     
     
     
@@ -38,4 +38,31 @@ class AddGroupWizard3ViewController: UIViewController, UIViewControllerTransitio
     @IBAction func BackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func NextButton(_ sender: Any) {
+        var groupLocation = GroupLocation.text
+        if (groupLocation?.characters.count)! > 3{
+            print(groupLocation?.characters.count)
+            wizardInput?["GroupLocation"] = groupLocation
+            performSegue(withIdentifier: "goToWizard4", sender: self)
+        }else{
+            print("error")
+            alert(message: "Too short")
+        }
+        
+        
+    }
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToWizard4" {
+            
+            let toViewController = segue.destination as! AddGroupWizard4ViewController
+            toViewController.transitioningDelegate = self
+            toViewController.wizardInput = wizardInput
+        }
+    }
+    
+}
+
