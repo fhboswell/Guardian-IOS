@@ -178,10 +178,14 @@ class GroupData  {
         request.httpMethod = "POST"
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
         
-        var postString = "group[description]="
+        var postString = "group[instructor]="
         postString += wizardInput["InstructorName"]!
         postString += "&group[title]="
         postString += wizardInput["GroupName"]!
+        postString += "&group[location]="
+        postString += wizardInput["GroupLocation"]!
+        postString += "&group[time]="
+        postString += wizardInput["GroupTime"]!
         
         
         

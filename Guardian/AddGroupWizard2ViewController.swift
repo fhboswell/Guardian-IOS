@@ -19,7 +19,7 @@ class AddGroupWizard2ViewController: UIViewController, UIViewControllerTransitio
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        print(wizardInput?["GroupName"])
+        //print(wizardInput?["GroupName"])
         
         
         // Do any additional setup after loading the view.

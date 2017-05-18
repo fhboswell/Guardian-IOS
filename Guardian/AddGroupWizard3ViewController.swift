@@ -41,7 +41,7 @@ class AddGroupWizard3ViewController: UIViewController, UIViewControllerTransitio
     @IBAction func NextButton(_ sender: Any) {
         var groupLocation = GroupLocation.text
         if (groupLocation?.characters.count)! > 3{
-            print(groupLocation?.characters.count)
+            //print(groupLocation?.characters.count)
             wizardInput?["GroupLocation"] = groupLocation
             performSegue(withIdentifier: "goToWizard4", sender: self)
         }else{

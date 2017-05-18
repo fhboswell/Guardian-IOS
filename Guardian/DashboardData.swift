@@ -15,6 +15,7 @@ import AWSS3
 class DashboardData  {
     
     let transferManager = AWSS3TransferManager.default()
+    var group :String?
     
     static let sharedInstance = DashboardData()
     func purge(_ entityName:String){
@@ -27,12 +28,10 @@ class DashboardData  {
         } catch {
             print("Something went wrong.\n")
         }
-        
-        
     }
     
     
-    var group :String?
+    
     
     func getDashboardDataFromServer(){
         purge("Individual")
@@ -55,23 +54,18 @@ class DashboardData  {
                 print("error=\(String(describing: error))")
                 return
             }
-            
+
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
             }
-            
-            //let responseString = String(data: data, encoding: .utf8)
+          
             DispatchQueue.main.async {
-                
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
-                   
                     print(json!)
                     for individual in json! {
                         let addIndividual = individual
-                        
-                        
                         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                         
                         let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
@@ -104,6 +98,69 @@ class DashboardData  {
         
         
     }
+    
+    
+    func setImage(ImageView :UIImageView){
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        
+        do {
+            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+            //fetchedUsers.first?.uuid
+            
+            //print(fetchedUsers.first?.selfieurl)
+            if fetchedUsers.first?.selfieurl == "None"{
+                return
+            }
+            
+            let filepath = fetchedUsers.first!.selfieurl!
+            
+            let index  = filepath.index(filepath.startIndex, offsetBy: URLModel.sharedInstance.s3url.characters.count )
+            
+            print(filepath.substring(from: index))
+            let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myImage.jpg")
+            
+            let downloadRequest = AWSS3TransferManagerDownloadRequest()
+            
+            downloadRequest?.bucket = "guardian-v1-storage"
+            downloadRequest?.key = filepath.substring(from: index)
+            downloadRequest?.downloadingFileURL = downloadingFileURL
+            
+            transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                
+                if let error = task.error as NSError? {
+                    if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                        switch code {
+                        case .cancelled, .paused:
+                            break
+                        default:
+                            print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
+                        }
+                    } else {
+                        print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
+                    }
+                    return nil
+                }
+                print("Download complete for: \(String(describing: downloadRequest?.key))")
+                ImageView.contentMode = .scaleAspectFit
+                ImageView.image = UIImage(contentsOfFile: downloadingFileURL.path)
+                //let downloadOutput = task.result
+                return nil
+            })
+            
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+        
+        
+    }
+
+    
+    
+    
+    
+    
     
     
     func upload(imagePath: URL){
@@ -162,25 +219,11 @@ class DashboardData  {
                 
                 //let uploadOutput = task.result
                 print("Upload complete for: \(String(describing: uploadRequest?.key))")
-                //return nil
-                
-                
-                
+          
                 self.changeUrl(filepath: filepath)
-                
-                
-                
-                
-                
+         
                 return nil
-                
-                
-                
-                
-                
-                
-                
-                
+        
             })
             
             //print(fetchedUsers.first?.uuid)
