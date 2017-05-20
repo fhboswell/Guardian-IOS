@@ -150,15 +150,22 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
                 fatalError("Failed to initialize ")
         }
         cell.NameLabel?.text = selectedIndividual.name
+        
+        var newcell = DashboardData.sharedInstance.fetchGroup(group :selectedIndividual.group_id!, cell: cell)
+
+        
+        
+        
+        
         if(selectedIndividual.check == "No"){
-            cell.CheckView.backgroundColor = UIColor.red
+            newcell.CheckView.backgroundColor = UIColor.red
             print("turn it red")
         }else {
-            cell.CheckView.backgroundColor = UIColor.green
+            newcell.CheckView.backgroundColor = UIColor.green
             print("turn it green")
         }
-        cell.contentView.backgroundColor = UIColor.init(white: 1, alpha: 0.6)
-        return cell
+        newcell.contentView.backgroundColor = UIColor.init(white: 1, alpha: 0.6)
+        return newcell
     }
     
     func configureGuardianCell(cell: DashboardGuardianTableViewCell, indexPath: IndexPath) -> DashboardGuardianTableViewCell{
@@ -168,6 +175,15 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         return cell
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -265,6 +281,19 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     
 }
+extension UIImage{
+    var roundedImage: UIImage {
+        let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: self.size)
+        UIGraphicsBeginImageContextWithOptions(self.size, false, 1)
+        UIBezierPath(
+            roundedRect: rect,
+            cornerRadius: self.size.height
+            ).addClip()
+        self.draw(in: rect)
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+}
+
 
 extension DashboardViewController:NSFetchedResultsControllerDelegate{
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

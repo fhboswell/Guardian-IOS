@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instructor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="individuals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Individual" inverseName="group" inverseEntity="Individual" syncable="YES"/>
     </entity>
     <entity name="Individual" representedClassName="Individual" syncable="YES" codeGenerationType="class">
         <attribute name="check" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="group_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="individuals" inverseEntity="Group" syncable="YES"/>
@@ -19,8 +23,8 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Group" positionX="-54" positionY="0" width="128" height="105"/>
-        <element name="Individual" positionX="-36" positionY="36" width="128" height="105"/>
+        <element name="Group" positionX="-54" positionY="0" width="128" height="150"/>
+        <element name="Individual" positionX="-36" positionY="36" width="128" height="120"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

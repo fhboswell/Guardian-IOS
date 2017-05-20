@@ -55,7 +55,7 @@ class AddIndividualViewController: UIViewController, CreateSuccess, UIViewContro
         return customPresentAnimationController
     }
     
-    
+    /*
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "test" {
@@ -64,7 +64,7 @@ class AddIndividualViewController: UIViewController, CreateSuccess, UIViewContro
             toViewController.transitioningDelegate = self
         }
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

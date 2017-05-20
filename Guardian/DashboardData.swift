@@ -64,14 +64,29 @@ class DashboardData  {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:AnyObject]]
                     print(json!)
-                    for individual in json! {
-                        let addIndividual = individual
+                    for dict in json! {
+                        
                         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                         
-                        let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
-                        individual.name = addIndividual["name"] as! String?
-                        individual.check = addIndividual["check"] as! String?
-                        individual.id = String(addIndividual["id"] as! Int)
+                        if let val = dict["check"] {
+                            let addIndividual = dict
+                        
+                            let individual = NSEntityDescription.insertNewObject(forEntityName: "Individual", into: moc) as! Individual
+                            individual.name = addIndividual["name"] as! String?
+                            individual.check = addIndividual["check"] as! String?
+                            individual.id = String(addIndividual["id"] as! Int)
+                            individual.group_id = String(addIndividual["group_id"] as! Int)
+                        }else{
+                            let addGroup = dict
+                            
+                            let group = NSEntityDescription.insertNewObject(forEntityName: "Group", into: moc) as! Group
+                            group.title = addGroup["title"] as! String?
+                            group.instructor = addGroup["instructor"] as! String?
+                            group.time = addGroup["time"] as! String?
+                            group.location = addGroup["location"] as! String?
+                            group.id = String(addGroup["id"] as! Int)
+                            
+                        }
                         //print(individual.check ?? "default value")
                         
                         
@@ -141,10 +156,12 @@ class DashboardData  {
                         print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
                     }
                     return nil
+                    
                 }
                 print("Download complete for: \(String(describing: downloadRequest?.key))")
                 ImageView.contentMode = .scaleAspectFit
-                ImageView.image = UIImage(contentsOfFile: downloadingFileURL.path)
+                ImageView.image = UIImage(contentsOfFile: downloadingFileURL.path)?.roundedImage
+                
                 //let downloadOutput = task.result
                 return nil
             })
@@ -286,14 +303,45 @@ class DashboardData  {
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         do {
-            let fetchedEmployees = try moc.fetch(fetchRequest) as! [Individual]
-            fetchedEmployees.first?.check = check
-            print(fetchedEmployees)
+            let fetched = try moc.fetch(fetchRequest) as! [Individual]
+            fetched.first?.check = check
+            print(fetched)
         } catch {
             fatalError("Failed to fetch employees: \(error)")
         }
         // }
         
+    }
+    
+    func fetchGroup(group :String, cell :DashboardTableViewCell) -> DashboardTableViewCell{
+        //if(group == self.group){
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Group")
+        
+        fetchRequest.predicate = NSPredicate(format: "id == %@", group)
+        
+        do {
+            let fetched = try moc.fetch(fetchRequest) as! [Group]
+            //print(fetched.first?.id)
+            cell.InstructorLabel.text = fetched.first?.title
+            cell.InstructorLabel.text = cell.InstructorLabel.text! + " with " + (fetched.first?.instructor)!
+            cell.LocationLabel.text = fetched.first?.location
+            cell.TimeLabel.text = fetched.first?.time
+            
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+    
+        return cell
+        
+        /*
+ @IBOutlet weak var NameLabel: UILabel!
+ @IBOutlet weak var InstructorLabel: UILabel!
+ @IBOutlet weak var CheckView: UIView!
+ @IBOutlet weak var LocationLabel: UILabel!
+ @IBOutlet weak var TimeLabel: UILabel!
+*/
+ 
     }
    
     

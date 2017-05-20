@@ -24,9 +24,12 @@
 		94424FB21E1C9530001C907E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB11E1C9530001C907E /* Assets.xcassets */; };
 		94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94424FB31E1C9530001C907E /* LaunchScreen.storyboard */; };
 		945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945127071EAEE80F001FA4BD /* GroupsViewController.swift */; };
+		946C9D7B1ECFBA170041CF40 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C9D7A1ECFBA170041CF40 /* SettingsButton.swift */; };
+		946C9D7D1ECFC2960041CF40 /* DashboardSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C9D7C1ECFC2960041CF40 /* DashboardSettingsViewController.swift */; };
+		946C9D7F1ECFCC890041CF40 /* DashboardCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C9D7E1ECFCC890041CF40 /* DashboardCropViewController.swift */; };
+		946C9D811ECFD0B20041CF40 /* NoUserImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 946C9D801ECFD0B20041CF40 /* NoUserImage.png */; };
 		946EE6071EBF10950027ECC6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946EE6061EBF10950027ECC6 /* Keys.plist */; };
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
-		948468B11EC838F000CFAD9F /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B01EC838F000CFAD9F /* testViewController.swift */; };
 		948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */; };
 		948468B51EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B41EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift */; };
 		948468B91EC8FB1500CFAD9F /* CustomNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B81EC8FB1500CFAD9F /* CustomNavigationAnimationController.swift */; };
@@ -79,9 +82,12 @@
 		94424FB11E1C9530001C907E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94424FB41E1C9530001C907E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		945127071EAEE80F001FA4BD /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		946C9D7A1ECFBA170041CF40 /* SettingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		946C9D7C1ECFC2960041CF40 /* DashboardSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardSettingsViewController.swift; sourceTree = "<group>"; };
+		946C9D7E1ECFCC890041CF40 /* DashboardCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCropViewController.swift; sourceTree = "<group>"; };
+		946C9D801ECFD0B20041CF40 /* NoUserImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoUserImage.png; sourceTree = "<group>"; };
 		946EE6061EBF10950027ECC6 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
-		948468B01EC838F000CFAD9F /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
 		948468B41EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupWizard1ViewController.swift; sourceTree = "<group>"; };
 		948468B81EC8FB1500CFAD9F /* CustomNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationAnimationController.swift; sourceTree = "<group>"; };
@@ -119,7 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				941DEA8C1EC1795700001426 /* DashboardViewController.swift */,
+				946C9D7C1ECFC2960041CF40 /* DashboardSettingsViewController.swift */,
+				946C9D7E1ECFCC890041CF40 /* DashboardCropViewController.swift */,
 				9405A4E21EC6AAB4008EB907 /* DashboardTableViewCell.swift */,
+				946C9D801ECFD0B20041CF40 /* NoUserImage.png */,
 				941DEA8E1EC17A7400001426 /* DashboardData.swift */,
 			);
 			name = Guardian;
@@ -142,6 +151,7 @@
 				94863BD31EA5625700579D25 /* URLModel.swift */,
 				947AEEF51E1DF9D60042659F /* KeychainService.swift */,
 				94289A1C1EA2D9D300C73ED3 /* ActionCableController.swift */,
+				946C9D7A1ECFBA170041CF40 /* SettingsButton.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -184,7 +194,6 @@
 				941DEA8B1EC1610300001426 /* Support */,
 				941DEA8A1EC160E200001426 /* Admin */,
 				94424FAB1E1C9530001C907E /* Main.storyboard */,
-				948468B01EC838F000CFAD9F /* testViewController.swift */,
 				94424FB31E1C9530001C907E /* LaunchScreen.storyboard */,
 				94424FB11E1C9530001C907E /* Assets.xcassets */,
 				94863BD51EA5AF1500579D25 /* Info.plist */,
@@ -302,6 +311,7 @@
 			files = (
 				94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */,
 				94424FB21E1C9530001C907E /* Assets.xcassets in Resources */,
+				946C9D811ECFD0B20041CF40 /* NoUserImage.png in Resources */,
 				94424FAD1E1C9530001C907E /* Main.storyboard in Resources */,
 				946EE6071EBF10950027ECC6 /* Keys.plist in Resources */,
 			);
@@ -350,6 +360,7 @@
 				941DEA8F1EC17A7400001426 /* DashboardData.swift in Sources */,
 				941415171EAC57ED0001C832 /* SignUpViewController.swift in Sources */,
 				9405A4E31EC6AAB4008EB907 /* DashboardTableViewCell.swift in Sources */,
+				946C9D7D1ECFC2960041CF40 /* DashboardSettingsViewController.swift in Sources */,
 				94424FAA1E1C9530001C907E /* ViewController.swift in Sources */,
 				94289A1B1EA2D54B00C73ED3 /* IndividualData.swift in Sources */,
 				94863BD41EA5625700579D25 /* URLModel.swift in Sources */,
@@ -361,12 +372,13 @@
 				948468C11EC9460000CFAD9F /* AddGroupWizard3ViewController.swift in Sources */,
 				948468BE1EC9441C00CFAD9F /* AddGroupWizard2ViewController.swift in Sources */,
 				945127081EAEE80F001FA4BD /* GroupsViewController.swift in Sources */,
+				946C9D7F1ECFCC890041CF40 /* DashboardCropViewController.swift in Sources */,
 				948468B51EC8E5EE00CFAD9F /* AddGroupWizard1ViewController.swift in Sources */,
 				948468C31EC94A3600CFAD9F /* AddGroupWizard4ViewController.swift in Sources */,
+				946C9D7B1ECFBA170041CF40 /* SettingsButton.swift in Sources */,
 				94424FA81E1C9530001C907E /* AppDelegate.swift in Sources */,
 				947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */,
 				948937831ECA66C9009A315B /* AddGroupWizard5ViewController.swift in Sources */,
-				948468B11EC838F000CFAD9F /* testViewController.swift in Sources */,
 				948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */,
 				94424FB01E1C9530001C907E /* Guardian.xcdatamodeld in Sources */,
 				949FCA391EB31C6100DC01BC /* AddIndividualViewController.swift in Sources */,
