@@ -10,14 +10,26 @@ import UIKit
 import CoreData
 import AWSS3
 
-class DashboardViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+
+protocol UpdateLateImageProtocol {
+    func updateImage(image: UIImage)
+}
+
+class DashboardViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateLateImageProtocol{
+    
+    func updateImage(image: UIImage) {
+        self.image = image
+    }
+
     
     
     
     @IBOutlet weak var GuardianName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var DashboardTableView: UITableView!
-    var imagePicker = UIImagePickerController()
+    
+    var image: UIImage?
+    
     
     
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -27,7 +39,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        DashboardData.sharedInstance.delegate = self
         let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor(netHex:0x1D3557)
         nav?.titleTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 34, weight: UIFontWeightThin)]
@@ -37,7 +49,8 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         DashboardTableView.dataSource = self
         initalizeFetchedResultsController()
         DashboardData.sharedInstance.getDashboardDataFromServer()
-        DashboardData.sharedInstance.setImage(ImageView: ImageView)
+        image = DashboardData.sharedInstance.setImage(ImageView: ImageView)
+        
         
     }
     
@@ -46,78 +59,8 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         //DashboardData.sharedInstance.getDashboardDataFromServer()
     }
     
-    
-    
-    @IBAction func AddPhoto(_ sender: Any) {
-        
-
-        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
-        {
-            UIAlertAction in
-            self.openCamera()
-        }
-        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
-        {
-            UIAlertAction in
-            self.openGallary()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
-        {
-            UIAlertAction in
-        }
-        
-        // Add the actions
-        imagePicker.delegate = (self as UIImagePickerControllerDelegate & UINavigationControllerDelegate)
-        alert.addAction(cameraAction)
-        alert.addAction(gallaryAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    func openCamera(){
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            self .present(imagePicker, animated: true, completion: nil)
-        }else{
-            let alert = UIAlertView()
-            alert.title = "Warning"
-            alert.message = "You don't have camera"
-            alert.addButton(withTitle: "OK")
-            alert.show()
-        }
-    }
-    func openGallary(){
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    //MARK:UIImagePickerControllerDelegate
-    
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.ImageView.contentMode = .scaleAspectFit
-            self.ImageView.image = pickedImage
-        }
-        
-        let fileManager = FileManager.default
-        let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let imagePath = documentsPath?.appendingPathComponent("image.jpg")
-        
-        // extract image from the picker and save it
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            try! UIImageJPEGRepresentation(pickedImage, 1.0)?.write(to: imagePath!)
-        }
-        
-        print(imagePath!)
-         DashboardData.sharedInstance.upload(imagePath: imagePath!)
-    
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
-        print("picker cancel.")
+    @IBAction func SettingsButton(_ sender: Any) {
+        performSegue(withIdentifier: "Settings", sender: self)
     }
     
     
@@ -176,17 +119,7 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
         
@@ -277,6 +210,18 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Settings" {
+            
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let nextView: DashboardSettingsViewController = destinationNavigationController.topViewController as!
+            DashboardSettingsViewController
+            
+            
+            nextView.image = image
+        }
     }
     
     

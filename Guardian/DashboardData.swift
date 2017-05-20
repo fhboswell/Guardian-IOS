@@ -16,6 +16,7 @@ class DashboardData  {
     
     let transferManager = AWSS3TransferManager.default()
     var group :String?
+     var delegate: UpdateLateImageProtocol?
     
     static let sharedInstance = DashboardData()
     func purge(_ entityName:String){
@@ -115,10 +116,10 @@ class DashboardData  {
     }
     
     
-    func setImage(ImageView :UIImageView){
+    func setImage(ImageView :UIImageView)-> UIImage{
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        
+        var recieveImage: UIImage? = UIImage (named: "NoUserImage.png")
         
         do {
             let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
@@ -126,7 +127,9 @@ class DashboardData  {
             
             //print(fetchedUsers.first?.selfieurl)
             if fetchedUsers.first?.selfieurl == "None"{
-                return
+                ImageView.contentMode = .scaleAspectFit
+                ImageView.image = recieveImage?.roundedImage
+                return recieveImage!
             }
             
             let filepath = fetchedUsers.first!.selfieurl!
@@ -141,6 +144,7 @@ class DashboardData  {
             downloadRequest?.bucket = "guardian-v1-storage"
             downloadRequest?.key = filepath.substring(from: index)
             downloadRequest?.downloadingFileURL = downloadingFileURL
+            
             
             transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
                 
@@ -161,15 +165,18 @@ class DashboardData  {
                 print("Download complete for: \(String(describing: downloadRequest?.key))")
                 ImageView.contentMode = .scaleAspectFit
                 ImageView.image = UIImage(contentsOfFile: downloadingFileURL.path)?.roundedImage
-                
-                //let downloadOutput = task.result
+                recieveImage = UIImage(contentsOfFile: downloadingFileURL.path)
+                self.delegate?.updateImage(image: recieveImage!)
                 return nil
+                
             })
             
         } catch {
             fatalError("Failed to fetch employees: \(error)")
         }
-        
+        ImageView.contentMode = .scaleAspectFit
+        ImageView.image = recieveImage?.roundedImage
+        return recieveImage!
         
     }
 

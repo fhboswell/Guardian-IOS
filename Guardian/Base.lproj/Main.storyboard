@@ -1041,7 +1041,7 @@
                                     <constraint firstAttribute="width" constant="46" id="cJi-D1-wJK"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="rS9-yV-Y1H" kind="presentation" id="KBJ-yc-b5m"/>
+                                    <action selector="SettingsButton:" destination="Pfk-ct-dD5" eventType="touchUpInside" id="cd5-M5-Xmr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAL-25-KUx">
@@ -1073,6 +1073,7 @@
                         <outlet property="DashboardTableView" destination="Mjo-8K-SF5" id="khf-3q-wTX"/>
                         <outlet property="GuardianName" destination="bdz-zN-UHQ" id="tNb-dK-caQ"/>
                         <outlet property="ImageView" destination="D4J-Yq-xFT" id="ggd-5H-bt2"/>
+                        <segue destination="rS9-yV-Y1H" kind="presentation" identifier="Settings" id="tUh-S8-NYo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjI-Am-ViI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1209,6 +1210,9 @@
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ResetButton:" destination="Duh-WT-Jet" eventType="touchUpInside" id="sQM-77-kkx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ED2-3L-15y">
                                 <rect key="frame" x="16" y="34" width="74" height="30"/>
@@ -1218,6 +1222,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="CancelButton:" destination="Duh-WT-Jet" eventType="touchUpInside" id="yXF-YC-Usw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1132699177" green="0.20495694880000001" blue="0.33777952189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1233,7 +1240,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="CancelButtonOutlet" destination="ED2-3L-15y" id="g5W-Xv-hNf"/>
                         <outlet property="DoneButtonOutlet" destination="801-5h-v33" id="Da1-xp-GzQ"/>
+                        <outlet property="LabelOutlet" destination="ITx-UY-pCa" id="bnI-Mq-zUt"/>
+                        <outlet property="ResetButtonOutlet" destination="WKC-bG-Bky" id="eOj-Wc-fcc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdT-5y-fcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
