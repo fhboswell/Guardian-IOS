@@ -23,7 +23,7 @@ class ViewController: UIViewController, AutoLogin  {
         super.viewDidLoad()
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
-         */
+         *///
         //URLModel.sharedInstance.makeUrlsDevelopment()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
