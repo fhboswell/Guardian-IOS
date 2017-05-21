@@ -25,6 +25,7 @@ class URLModel  {
     var createGroupUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi"
     var dashboardUrl = "https://guardian-app-v1.herokuapp.com/api/v1/dashboardapi"
     var fileurl =  "https://guardian-app-v1.herokuapp.com/api/v1/fileurl.json"
+    var actionRequrl =  "https://guardian-app-v1.herokuapp.com/api/v1/actionReq.json"
     
     
     var s3url = "https://guardian-v1-storage.s3-us-west-1.amazonaws.com/"
@@ -44,6 +45,7 @@ class URLModel  {
         createGroupUrl = "https://guardian-app-v1.herokuapp.com/api/v1/groupsapi"
         dashboardUrl = "https://guardian-app-v1.herokuapp.com/api/v1/dashboardapi"
         fileurl =  "https://guardian-app-v1.herokuapp.com/api/v1/fileurl.json"
+        actionRequrl =  "https://guardian-app-v1.herokuapp.com/api/v1/actionReq.json"
 
     }
     func makeUrlsDevelopment(){
@@ -55,6 +57,7 @@ class URLModel  {
         createGroupUrl = "http://localhost:3000/api/v1/groupsapi"
         dashboardUrl = "http://localhost:3000/api/v1/dashboardapi"
         fileurl =  "http://localhost:3000/api/v1/fileurl.json"
+        actionRequrl =  "http://localhost:3000/api/v1/actionReq.json"
     }
     
 

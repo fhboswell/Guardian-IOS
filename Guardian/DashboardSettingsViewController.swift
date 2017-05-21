@@ -28,10 +28,17 @@ class DashboardSettingsViewController: UIViewController, UpdateImageProtocol {
     }
     @IBOutlet weak var profileImage: UIImageView!
 
+    
     @IBAction func CancelButton(_ sender: Any) {
         self.navigationController?.dismiss(animated: true)
     }
+    
+    
+    @IBOutlet weak var NameField: UITextField!
+    @IBOutlet weak var TitleField: UITextField!
+    
     @IBAction func DoneButton(_ sender: Any) {
+        DashboardData.sharedInstance.changeActionRequired(actionReq: "no", name: NameField.text!, title: TitleField.text!)
         self.navigationController?.dismiss(animated: true)
     }
     override func didReceiveMemoryWarning() {

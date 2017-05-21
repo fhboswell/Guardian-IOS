@@ -19,12 +19,15 @@ class ViewController: UIViewController, AutoLogin  {
    
    
     @IBOutlet weak var TitleLabel: UILabel!
+    
+    var actionRequired: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
          #############################################-----Change URL TYPE HERE-----#############################################
          *///
-        //URLModel.sharedInstance.makeUrlsDevelopment()
+        URLModel.sharedInstance.makeUrlsDevelopment()
          self.navigationController?.isNavigationBarHidden = true
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -72,12 +75,6 @@ class ViewController: UIViewController, AutoLogin  {
     
    
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SignUpIdent" {
-            let secondController = segue.destination as! SignUpViewController
-            secondController.delegate = self
-        }
-    }
     
     
     @IBAction func LoginButton(_ sender: Any) {
@@ -117,6 +114,7 @@ class ViewController: UIViewController, AutoLogin  {
                     
                     print(userJson["selfieurl"]!)
                     print(userJson["uuid"]!)
+                    self.actionRequired = userJson["actionreq"] as! String
                     
                     //var selfieurl: NSString
                     
@@ -181,6 +179,23 @@ class ViewController: UIViewController, AutoLogin  {
         
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Guardian" {
+            
+            let nextView = segue.destination as! DashboardViewController
+            
+            
+            
+            nextView.actionRequired = actionRequired
+        }
+        if segue.identifier == "SignUpIdent" {
+            let secondController = segue.destination as! SignUpViewController
+            secondController.delegate = self
+        }
+
+        
+    }
+
 
     
 

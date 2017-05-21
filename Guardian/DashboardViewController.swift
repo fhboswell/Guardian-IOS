@@ -17,14 +17,17 @@ protocol UpdateLateImageProtocol {
 
 class DashboardViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UpdateLateImageProtocol{
     
+    
     func updateImage(image: UIImage) {
         self.image = image
     }
 
+    var actionRequired: String?
     
+    @IBOutlet weak var RealTitleLabel: UILabel!
     
-    
-    @IBOutlet weak var GuardianName: UILabel!
+    @IBOutlet weak var TitleLabel: UILabel!
+   
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var DashboardTableView: UITableView!
     @IBOutlet weak var NameOutlet: UILabel!
@@ -65,10 +68,27 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
         
     }
     func isActionRequired(){
+        if actionRequired == "Yes"{
+            NameOutlet.attributedText = attributedStringActionRequired()
+            NameOutlet.sizeToFit()
+            RealTitleLabel.isHidden = true
+            
+            
+        }else{
+            var blankString = NSMutableAttributedString(string: "")
+            NameOutlet.attributedText = blankString
+            NameOutlet.sizeToFit()
+            NameOutlet.isUserInteractionEnabled = false
+            
+            
+            TitleLabel.isHidden = true
+            RealTitleLabel.isHidden = false
+            RealTitleLabel.layer.borderColor = UIColor.black.cgColor
+            RealTitleLabel.layer.borderWidth = 4
+        }
         
        
-        NameOutlet.attributedText = attributedStringActionRequired()
-        NameOutlet.sizeToFit()
+       
        
         
     }
@@ -189,8 +209,26 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     }
     
     func configureGuardianCell(cell: DashboardGuardianTableViewCell, indexPath: IndexPath) -> DashboardGuardianTableViewCell{
-        //cell.layer.borderWidth = 3.0
-       // cell.layer.borderColor = UIColor.black.cgColor
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        //let name = "Henry"
+        //fetchRequest.predicate = NSPredicate()
+        print("Users")
+        
+        do {
+            
+            
+            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+            //fetchedUsers.first?.uuid
+            
+            //print(fetchedUsers.first?.selfieurl)
+            
+            print(fetchedUsers)
+            
+        } catch {
+            fatalError("Failed to fetch : \(error)")
+        }
+        
         
         return cell
         
@@ -261,6 +299,8 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             return cell
         }
         if indexPath.section == 1{
+            
+            print("made it to this row")
             var cell = tableView.dequeueReusableCell(withIdentifier: "Cellidentifier4", for: indexPath) as! DashboardGuardianTableViewCell
             // Set up the cell
             cell = configureGuardianCell(cell: cell, indexPath: indexPath)

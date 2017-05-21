@@ -25,31 +25,19 @@ class DashboardData  {
         do {
             let fetched = try moc.fetch(venueFetch) as! [NSManagedObject]
             fetched.forEach({moc.delete($0)})
-            
         } catch {
             print("Something went wrong.\n")
         }
     }
-    
-    
-    
-    
     func getDashboardDataFromServer(){
         purge("Individual")
-        
         let token = KeychainController.loadToken()!
         print(token)
-        
         let urlString = URLModel.sharedInstance.dashboardUrl
-        
-        
         print(urlString)
         var request = URLRequest(url: URL(string: urlString)!)
-        
-        
         request.httpMethod = "GET"
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // networking error
                 print("error=\(String(describing: error))")
@@ -173,7 +161,7 @@ class DashboardData  {
             })
             
         } catch {
-            fatalError("Failed to fetch employees: \(error)")
+            fatalError("Failed to fetch : \(error)")
         }
         ImageView.contentMode = .scaleAspectFit
         ImageView.image = recieveImage?.roundedImage
@@ -181,53 +169,27 @@ class DashboardData  {
         
     }
 
-    
-    
-    
-    
-    
-    
-    
     func upload(imagePath: URL){
-        
-        
-        
-        
-        
-        
-        
+
         let transferManager = AWSS3TransferManager.default()
         let uploadingFileURL = imagePath
         
         let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        //let name = "Henry"
-        //fetchRequest.predicate = NSPredicate()
-        
         do {
-            
-            
             let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
-            //fetchedUsers.first?.uuid
-            
-            //print(fetchedUsers.first?.selfieurl)
+  
             if fetchedUsers.first?.uuid == "None"{
                 return
             }
             
             let uuid = fetchedUsers.first!.uuid!
-            
             let filepath = "uploads/" + uuid + "/file.jpg"
-            
-            
             let uploadRequest = AWSS3TransferManagerUploadRequest()
-            
             uploadRequest?.bucket = "guardian-v1-storage"
             uploadRequest?.key = filepath
             uploadRequest?.body = uploadingFileURL
-            
             transferManager.upload(uploadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
-                
                 if let error = task.error as NSError? {
                     if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
                         switch code {
@@ -241,19 +203,14 @@ class DashboardData  {
                     }
                     return nil
                 }
-                
-                //let uploadOutput = task.result
                 print("Upload complete for: \(String(describing: uploadRequest?.key))")
-          
                 self.changeUrl(filepath: filepath)
-         
                 return nil
-        
             })
             
             //print(fetchedUsers.first?.uuid)
         } catch {
-            fatalError("Failed to fetch employees: \(error)")
+            fatalError("Failed to fetch : \(error)")
         }
         
         
@@ -275,6 +232,49 @@ class DashboardData  {
         var postString = "fileurl="
         postString += URLModel.sharedInstance.s3url
         postString += filepath
+        
+        
+        request.httpBody = postString.data(using: .utf8)
+        print(postString)
+        
+        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            
+        }
+        task.resume()
+        
+    }
+
+    func changeActionRequired(actionReq: String, name: String, title: String){
+        let token = KeychainController.loadToken()!
+        print(token)
+        
+        let urlString = URLModel.sharedInstance.actionRequrl
+        
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.httpMethod = "POST"
+        
+        
+        
+        var postString = "user[actionreq]="
+        postString += actionReq
+        postString += "&user[title]="
+        postString += title
+        postString += "&user[name]="
+        postString += name
+        
         
         
         request.httpBody = postString.data(using: .utf8)
