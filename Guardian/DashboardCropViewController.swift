@@ -102,7 +102,9 @@ class DashboardCropViewController: UIViewController, UIScrollViewDelegate, UIIma
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
            // self.ImageView.contentMode = .scaleAspectFit
            // self.ImageView.image = pickedImage
-            imageToCrop = pickedImage
+            imageToCrop = pickedImage.correctlyOrientedImage()
+        
+            //croppedImage = croppedImage.correctlyOrientedImage()
             initialize()
             makeView()
             putDataIntoView()
@@ -263,16 +265,21 @@ class DashboardCropViewController: UIViewController, UIScrollViewDelegate, UIIma
         
         let imageRef: CGImage? = processedImage.cgImage?.cropping(to: visibleRect)!
         
-        let croppedImage:UIImage = UIImage(cgImage: imageRef!)
+        var croppedImage:UIImage = UIImage(cgImage: imageRef!)
+        delegate?.userIsDone(image: croppedImage)
+        //croppedImage = croppedImage.correctlyOrientedImage()
+        
         let fileManager = FileManager.default
         let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         let imagePath = documentsPath?.appendingPathComponent("image.jpg")
         try! UIImageJPEGRepresentation(croppedImage, 1.0)?.write(to: imagePath!)
+        
+        
         DashboardData.sharedInstance.upload(imagePath: imagePath!)
-        delegate?.userIsDone(image: croppedImage)
+        
         self.navigationController?.popViewController(animated: true)
     }
-
     
+       
 }
 

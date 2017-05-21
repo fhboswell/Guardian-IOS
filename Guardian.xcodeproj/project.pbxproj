@@ -27,7 +27,6 @@
 		946C9D7B1ECFBA170041CF40 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C9D7A1ECFBA170041CF40 /* SettingsButton.swift */; };
 		946C9D7D1ECFC2960041CF40 /* DashboardSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C9D7C1ECFC2960041CF40 /* DashboardSettingsViewController.swift */; };
 		946C9D7F1ECFCC890041CF40 /* DashboardCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C9D7E1ECFCC890041CF40 /* DashboardCropViewController.swift */; };
-		946C9D811ECFD0B20041CF40 /* NoUserImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 946C9D801ECFD0B20041CF40 /* NoUserImage.png */; };
 		946EE6071EBF10950027ECC6 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946EE6061EBF10950027ECC6 /* Keys.plist */; };
 		947AEEF61E1DF9D60042659F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947AEEF51E1DF9D60042659F /* KeychainService.swift */; };
 		948468B31EC857D200CFAD9F /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */; };
@@ -86,7 +85,6 @@
 		946C9D7A1ECFBA170041CF40 /* SettingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		946C9D7C1ECFC2960041CF40 /* DashboardSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardSettingsViewController.swift; sourceTree = "<group>"; };
 		946C9D7E1ECFCC890041CF40 /* DashboardCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCropViewController.swift; sourceTree = "<group>"; };
-		946C9D801ECFD0B20041CF40 /* NoUserImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoUserImage.png; sourceTree = "<group>"; };
 		946EE6061EBF10950027ECC6 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		947AEEF51E1DF9D60042659F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		948468B21EC857D200CFAD9F /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			children = (
 				94424FA91E1C9530001C907E /* ViewController.swift */,
 				941415161EAC57ED0001C832 /* SignUpViewController.swift */,
-				946C9D831ED019C20041CF40 /* Not Code Supporting */,
 				941DEA891EC160DA00001426 /* Guardian */,
 				941DEA8B1EC1610300001426 /* Support */,
 				941DEA8A1EC160E200001426 /* Admin */,
@@ -212,14 +209,6 @@
 				946C9D7E1ECFCC890041CF40 /* DashboardCropViewController.swift */,
 			);
 			name = Wizard;
-			sourceTree = "<group>";
-		};
-		946C9D831ED019C20041CF40 /* Not Code Supporting */ = {
-			isa = PBXGroup;
-			children = (
-				946C9D801ECFD0B20041CF40 /* NoUserImage.png */,
-			);
-			name = "Not Code Supporting";
 			sourceTree = "<group>";
 		};
 		948468B61EC8E5F600CFAD9F /* Group */ = {
@@ -330,7 +319,6 @@
 			files = (
 				94424FB51E1C9530001C907E /* LaunchScreen.storyboard in Resources */,
 				94424FB21E1C9530001C907E /* Assets.xcassets in Resources */,
-				946C9D811ECFD0B20041CF40 /* NoUserImage.png in Resources */,
 				94424FAD1E1C9530001C907E /* Main.storyboard in Resources */,
 				94C0E5941ED104A4005255B3 /* AppIcon.appiconset in Resources */,
 				946EE6071EBF10950027ECC6 /* Keys.plist in Resources */,

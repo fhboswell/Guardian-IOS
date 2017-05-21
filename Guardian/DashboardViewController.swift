@@ -237,6 +237,23 @@ extension UIImage{
         self.draw(in: rect)
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
+    
+    func correctlyOrientedImage() -> UIImage {
+        if self.imageOrientation == UIImageOrientation.up {
+            return self
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x: 0,y:  0, width: self.size.width, height: self.size.height))
+        var normalizedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!;
+        UIGraphicsEndImageContext();
+        
+        return normalizedImage;
+    }
+    
+
+    
+       
 }
 
 
