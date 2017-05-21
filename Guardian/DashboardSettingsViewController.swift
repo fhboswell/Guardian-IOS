@@ -28,6 +28,12 @@ class DashboardSettingsViewController: UIViewController, UpdateImageProtocol {
     }
     @IBOutlet weak var profileImage: UIImageView!
 
+    @IBAction func CancelButton(_ sender: Any) {
+        self.navigationController?.dismiss(animated: true)
+    }
+    @IBAction func DoneButton(_ sender: Any) {
+        self.navigationController?.dismiss(animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

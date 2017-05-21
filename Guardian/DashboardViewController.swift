@@ -27,32 +27,87 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     @IBOutlet weak var GuardianName: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var DashboardTableView: UITableView!
-    
+    @IBOutlet weak var NameOutlet: UILabel!
     var image: UIImage?
-    
-    
-    
+    var rect1: CGRect?
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    
-    
     let transferManager = AWSS3TransferManager.default()
     
+    
     override func viewDidLoad() {
+         self.navigationController?.isNavigationBarHidden = true
         super.viewDidLoad()
+        setupViewController()
+        isActionRequired()
+        //NameOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DashboardViewController.tappedLabel)))
+        
+        
+    }
+    
+    
+    func setupViewController(){
         DashboardData.sharedInstance.delegate = self
         let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor(netHex:0x1D3557)
         nav?.titleTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 34, weight: UIFontWeightThin)]
         //self.title = "Your Groups"
-        self.navigationController?.isNavigationBarHidden = false
+        
         DashboardTableView.delegate = self
         DashboardTableView.dataSource = self
         initalizeFetchedResultsController()
         DashboardData.sharedInstance.getDashboardDataFromServer()
         image = DashboardData.sharedInstance.setImage(ImageView: ImageView)
         
+        NameOutlet.isUserInteractionEnabled = true
+        rect1 = getRect(str: NameOutlet.attributedText!, range: NSMakeRange(20, 28), maxWidth: NameOutlet.frame.width)
+        
+        
         
     }
+    func isActionRequired(){
+        
+       
+        NameOutlet.attributedText = attributedStringActionRequired()
+        NameOutlet.sizeToFit()
+       
+        
+    }
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch:UITouch = touches.first!
+        if touch.view == NameOutlet {
+             let currentPoint = touch.location(in: NameOutlet)
+            if (rect1?.contains(currentPoint))! {
+                
+                performSegue(withIdentifier: "Settings", sender: self)
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    func attributedStringActionRequired() -> NSAttributedString {
+        let fontSize = UIFont.systemFontSize
+        let attrs = [
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+        let nonBoldAttribute = [
+            NSFontAttributeName: UIFont.systemFont(ofSize: fontSize),
+            NSForegroundColorAttributeName: UIColor.darkGray
+            ]
+        var attrStr = NSMutableAttributedString(string: "Action Is Required Please ", attributes: nonBoldAttribute)
+        var attrStr2 = NSMutableAttributedString(string: "Touch Here", attributes: attrs)
+       
+        attrStr.append(attrStr2)
+        return attrStr
+    }
+    
+    
     
         
        override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +117,28 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     @IBAction func SettingsButton(_ sender: Any) {
         performSegue(withIdentifier: "Settings", sender: self)
     }
+    
+   
+    
+    @IBAction func LogoutButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        
+        
+    }
+    
+    func getRect(str: NSAttributedString, range: NSRange, maxWidth: CGFloat) -> CGRect {
+        let textStorage = NSTextStorage(attributedString: str)
+        let textContainer = NSTextContainer(size: CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude))
+        let layoutManager = NSLayoutManager()
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+        textContainer.lineFragmentPadding = 0
+        let pointer = UnsafeMutablePointer<NSRange>.allocate(capacity: 1)
+        layoutManager.characterRange(forGlyphRange: range, actualGlyphRange: pointer)
+        return layoutManager.boundingRect(forGlyphRange: pointer.move(), in: textContainer)
+    }
+    
+    
     
     
     

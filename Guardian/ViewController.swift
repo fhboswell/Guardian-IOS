@@ -25,8 +25,8 @@ class ViewController: UIViewController, AutoLogin  {
          #############################################-----Change URL TYPE HERE-----#############################################
          *///
         //URLModel.sharedInstance.makeUrlsDevelopment()
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+         self.navigationController?.isNavigationBarHidden = true
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         ActionCableController.sharedInstance.initializeActionCable()
         
