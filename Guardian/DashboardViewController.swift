@@ -19,7 +19,12 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
     
     
     func updateImage(image: UIImage) {
+        ImageView.image = image.roundedImage
         self.image = image
+        actionRequired = "no"
+        self.isActionRequired()
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DashboardViewController.isActionRequired), userInfo: nil, repeats: false)
+        
     }
 
     var actionRequired: String?
@@ -75,16 +80,34 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             
             
         }else{
-            var blankString = NSMutableAttributedString(string: "")
-            NameOutlet.attributedText = blankString
-            NameOutlet.sizeToFit()
-            NameOutlet.isUserInteractionEnabled = false
+            
+            
+            let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            
+            do {
+                let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+                //fetchedUsers.first?.uuid
+                print("here")
+                //print(fetchedUsers.first?.selfieurl)
+                if fetchedUsers.first?.name != ""{
+                    var nameString = NSMutableAttributedString(string: (fetchedUsers.first?.name)!)
+                    NameOutlet.attributedText = nameString
+                    NameOutlet.sizeToFit()
+                    NameOutlet.isUserInteractionEnabled = false
+                    DashboardTableView.reloadData()
+                }
+            } catch {
+                fatalError("Failed to fetch : \(error)")
+            }
+
+            
             
             
             TitleLabel.isHidden = true
             RealTitleLabel.isHidden = false
             RealTitleLabel.layer.borderColor = UIColor.black.cgColor
-            RealTitleLabel.layer.borderWidth = 4
+            RealTitleLabel.layer.borderWidth = 2
         }
         
        
@@ -220,7 +243,23 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             
             let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
             //fetchedUsers.first?.uuid
+            if fetchedUsers.first?.name == ""{
+                cell.NameLabel?.textColor = .white
+                
+                cell.contentView.backgroundColor = UIColor(netHex:0x1D3557)
+               
+                
+            }
+            else{
+                cell.NameLabel?.textColor = .black
+                cell.contentView.backgroundColor = UIColor.white
+                cell.NameLabel.text = fetchedUsers.first?.name
+                cell.TitleLabel.text = fetchedUsers.first?.title
+                cell.EmailLabel.text = fetchedUsers.first?.type_key
+            }
             
+           
+
             //print(fetchedUsers.first?.selfieurl)
             
             print(fetchedUsers)
@@ -338,6 +377,8 @@ class DashboardViewController: UIViewController,  UITableViewDataSource, UITable
             
             
             nextView.image = image
+            nextView.delegate = self
+            
         }
     }
     

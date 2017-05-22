@@ -22,6 +22,9 @@ class DashboardGuardianTableViewCell: UITableViewCell {
     
     @IBOutlet weak var NameLabel: UILabel!
     
-    @IBOutlet weak var CheckView: UIView!
+    @IBOutlet weak var EmailLabel: UILabel!
+   
+    @IBOutlet weak var TitleLabel: UILabel!
     
+    @IBOutlet weak var PickupLabel: UILabel!
 }

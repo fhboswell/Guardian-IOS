@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol UpdateImageProtocol {
     func userIsDone(image: UIImage)
@@ -15,16 +16,22 @@ protocol UpdateImageProtocol {
 class DashboardSettingsViewController: UIViewController, UpdateImageProtocol {
 
     var image: UIImage?
+    var delegate: UpdateLateImageProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         profileImage.isUserInteractionEnabled = true
         
         userIsDone(image: image!)
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DashboardSettingsViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         //profileImage.addGestureRecognizer(tapRecognizer)
 
         // Do any additional setup after loading the view.
+    }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     @IBOutlet weak var profileImage: UIImageView!
 
@@ -39,6 +46,24 @@ class DashboardSettingsViewController: UIViewController, UpdateImageProtocol {
     
     @IBAction func DoneButton(_ sender: Any) {
         DashboardData.sharedInstance.changeActionRequired(actionReq: "no", name: NameField.text!, title: TitleField.text!)
+        delegate?.updateImage(image: image!)
+        
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        do {
+            let fetchedUsers = try moc.fetch(fetchRequest) as! [User]
+            //fetchedUsers.first?.uuid
+            
+            //print(fetchedUsers.first?.selfieurl)
+            fetchedUsers.first?.name = NameField.text!
+            fetchedUsers.first?.title = TitleField.text!
+            
+                
+            
+        } catch {
+            fatalError("Failed to fetch : \(error)")
+        }
         self.navigationController?.dismiss(animated: true)
     }
     override func didReceiveMemoryWarning() {
@@ -48,6 +73,7 @@ class DashboardSettingsViewController: UIViewController, UpdateImageProtocol {
     
     func userIsDone(image: UIImage) {
         profileImage.image = image.roundedImage
+        self.image = image
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

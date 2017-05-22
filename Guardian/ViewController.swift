@@ -116,17 +116,24 @@ class ViewController: UIViewController, AutoLogin  {
                     print(userJson["uuid"]!)
                     self.actionRequired = userJson["actionreq"] as! String
                     
+                    var usersName = ""
+                    var usersTitle = ""
+                    if self.actionRequired != "Yes" && self.actionRequired != "yes" {
+                        usersName = userJson["name"]! as! String
+                        usersTitle = userJson["title"]! as! String
+                    }
+                    
                     //var selfieurl: NSString
                     
                     if let selfieurl = userJson["selfieurl"] as? NSString{
-                    self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
+                        self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString, name: usersName, title: usersTitle)
                     } else{
                         let selfieurl = "None"
                         if (userJson["uuid"] as? NSString) != nil{
-                            self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString)
+                            self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl as String, uuid: userJson["uuid"] as! NSString, name: usersName, title: usersTitle)
                         } else{
                             let uuid = "None"
-                            self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl, uuid: uuid as NSString)
+                            self.loginSucessful(token: json["auth_token"]! as! NSString, ID: "\(userID)" as NSString, type_key: userJson["type_key"] as! NSString, selfieurl: selfieurl, uuid: uuid as NSString, name: usersName, title: usersTitle)
                         }
                     
                     }
@@ -149,7 +156,7 @@ class ViewController: UIViewController, AutoLogin  {
         }
     }
     
-    func loginSucessful(token: NSString, ID: NSString, type_key: NSString, selfieurl: String, uuid: NSString){
+    func loginSucessful(token: NSString, ID: NSString, type_key: NSString, selfieurl: String, uuid: NSString, name: String, title: String){
         
         DispatchQueue.main.async {
             KeychainController.saveToken(token: token)
@@ -161,6 +168,8 @@ class ViewController: UIViewController, AutoLogin  {
             user.type_key = type_key as String
             user.selfieurl = selfieurl
             user.uuid = uuid as String
+            user.title = title
+            user.name = name
             self.performSegue(withIdentifier: type_key as String, sender: self)
         }
         

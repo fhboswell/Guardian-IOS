@@ -17,7 +17,9 @@
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="individuals" inverseEntity="Group" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="selfieurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type_key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,6 +27,6 @@
     <elements>
         <element name="Group" positionX="-54" positionY="0" width="128" height="150"/>
         <element name="Individual" positionX="-36" positionY="36" width="128" height="120"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
