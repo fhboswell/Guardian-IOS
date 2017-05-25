@@ -268,7 +268,7 @@
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNw-mj-ZQq">
                                         <rect key="frame" x="16" y="300" width="343" height="289"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cellidentifier" textLabel="N06-cF-r4R" rowHeight="45" style="IBUITableViewCellStyleDefault" id="MKN-aq-t4f">
                                                 <rect key="frame" x="0.0" y="28" width="343" height="45"/>
